@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import Container from 'react-bootstrap/Container';
 
@@ -6,7 +6,16 @@ import CardItem from '../CardItem/CardItem';
 import Spinner from '../../components/Spinner/Spinner';
 import CardColumns from 'react-bootstrap/CardColumns';
 
-const CardList = ({ items }) => {
+const CardList = ({ items, onLoadScroll }) => {
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
+        onLoadScroll();
+      }
+    });
+  }, [onLoadScroll]);
+
   return (
     <>
       <Container>

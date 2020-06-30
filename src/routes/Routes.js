@@ -1,14 +1,18 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import { BrowserRouter, Route } from "react-router-dom";
 
-import Main from '../pages/Main'
+import store from '../redux/store';
+import Main from '../pages/Main/Main'
 import Pokemon from '../pages/Pokemon'
 
 const Routes = () => {
   return (
     <BrowserRouter >
-      <Route path="/" exact component={Main} />
-      <Route path="/pokemon/:id" component={Pokemon} />
+      <Provider store={store}>
+        <Route path="/" exact component={Main} />
+        <Route path="/pokemon/:id" component={Pokemon} />
+      </Provider>
     </BrowserRouter>
   );
 }
