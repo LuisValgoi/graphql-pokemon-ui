@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Redirect } from "react-router-dom";
-import { useRouteMatch } from 'react-router-dom';
+import React from 'react';
+import { useRouteMatch, Link } from "react-router-dom";
 
 import BrowserURL from '../../util/BrowserURL';
 import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
 
 const style = {
   shell: {
@@ -20,19 +20,15 @@ const style = {
 };
 
 const Shell = ({ title }) => {
-  const [showNavBackLink, setShowNavBackLink] = useState(false);
-
-  useEffect(() => {
-    setShowNavBackLink(window.location.pathname !== BrowserURL.HOME)
-  }, [window.location.pathname]);
+  const hideNavBack = useRouteMatch(BrowserURL.HOME);
 
   return (
     <div style={style.shell} className='p-4'>
-      {showNavBackLink && (
-        <Container>
-          <Redirect to={BrowserURL.HOME}>
-            <p style={style.breadcrumb}>Voltar</p>
-          </Redirect>
+      {hideNavBack && (
+        <Container style={style.breadcrumb}>
+          <Link to={BrowserURL.HOME}>
+            <Button variant='link'>Voltar</Button>
+          </Link>
         </Container>
       )}
       <h1 className='text-center'>
