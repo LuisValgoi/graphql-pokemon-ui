@@ -2,6 +2,13 @@
 
 GraphQL Pokemon User Interface
 
+## How to Run
+
+```
+yarn
+yarn mock 
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
