@@ -5,10 +5,10 @@ import Alert from 'react-bootstrap/Alert';
 
 import CardItem from '../CardItem/CardItem';
 
-const CardList = ({ items, onLoadScroll }) => {
+const CardList = ({ items, isScrollBlocked, onLoadScroll }) => {
   useEffect(() => {
     window.addEventListener('scroll', () => {
-      if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
+      if (((window.innerHeight + window.scrollY) >= document.body.scrollHeight) && !isScrollBlocked) {
         onLoadScroll();
       }
     });
@@ -29,6 +29,6 @@ const CardList = ({ items, onLoadScroll }) => {
       )}
     </>
   );
-}
+};
 
 export default CardList;

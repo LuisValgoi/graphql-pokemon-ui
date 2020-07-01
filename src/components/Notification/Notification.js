@@ -11,13 +11,16 @@ const style = {
   }
 };
 
-export default function Notification({ title, message, handleClose }) {
+const Notification = React.memo(function Notification({ title, message, handleClose }) {
   return (
     <Container style={{ position: 'relative' }}>
       <Alert style={style.notification} variant='warning' onClose={handleClose} dismissible>
-        <em>{new Date().toDateString()}</em>
+        <Alert.Heading>{title}</Alert.Heading>
+        <hr />
         <p>{message}</p>
       </Alert>
     </Container>
   )
-}
+});
+
+export default Notification;

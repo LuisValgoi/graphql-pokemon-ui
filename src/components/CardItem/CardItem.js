@@ -6,7 +6,7 @@ import Badge from 'react-bootstrap/Badge';
 
 const CardItem = ({ item }) => {
   return (
-    <Card key={`${item.id}${Date.now()}`}>
+    <Card>
       <Card.Header className='text-center'>
         <Card.Text>{item.name}</Card.Text>
       </Card.Header>

@@ -6,30 +6,43 @@ const INITIAL_STATE = {
   pokemons: [],
   hasFailed: false,
   isLoading: false,
-  scrollAmount: 1
+  scrollAmount: 1,
+  scrollBlock: false
 };
 
 const reducer = handleActions(
   {
+    [ActionMain.ON_SET_SCROLL_AMOUNT_LIST]: (state, action) => {
+      return {
+        ...state,
+        scrollAmount: action.payload
+      };
+    },
     [ActionMain.ON_POKEMON_LOAD_REQUEST]: state => {
       return {
         ...state,
         hasFailed: false,
-        isLoading: true
+        isLoading: true,
+        scrollBlock: false
       };
     },
     [ActionMain.ON_POKEMON_LOAD_STOP]: state => {
       return {
         ...state,
-        isLoading: false
+        isLoading: false,
+        scrollBlock: true
       };
     },
-    [ActionMain.ON_POKEMON_LOAD_SUCCESS_REQUEST]: (state, action) => {
+    [ActionMain.ON_POKEMON_LOAD_SUCCESS]: (state, action) => {
+      for (let i = 0; i < action.payload.length; i++) {
+        action.payload[i].id = `${Date.now()}=${action.payload[i].id}`;
+      }
       return {
         ...state,
+        pokemons: state.pokemons.concat(action.payload),
         hasFailed: false,
         isLoading: false,
-        pokemons: state.pokemons.concat(action.payload)
+        scrollBlock: false,
       };
     },
     [ActionMain.ON_POKEMON_LOAD_FAIL]: state => {
@@ -37,13 +50,8 @@ const reducer = handleActions(
         ...state,
         hasFailed: true,
         isLoading: false,
-        pokemons: []
-      };
-    },
-    [ActionMain.ON_SET_SCROLL_AMOUNT_LIST]: (state, action) => {
-      return {
-        ...state,
-        scrollAmount: action.payload
+        pokemons: [],
+        scrollBlock: false,
       };
     }
   },
