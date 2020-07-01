@@ -1,7 +1,13 @@
 import { combineReducers } from 'redux';
 
-import MainReducer from '../pages/Main/reducers/Main';
+import MainReducer from './Main/reducers/Main';
+import MainLogReducer from './Main/reducers/MainLog';
+import MainNotificationReducer from './Main/reducers/MainNotification';
 
 export default combineReducers({
-  main: MainReducer
+  main: combineReducers({
+    data: MainReducer,
+    log: MainLogReducer,
+    notification: MainNotificationReducer
+  })
 });

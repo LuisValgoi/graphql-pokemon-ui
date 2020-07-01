@@ -3,7 +3,10 @@ import React from 'react';
 const style = {
   shell: {
     backgroundColor: '#f7f7f7',
-    borderBottom: '1px solid #ececec'
+    borderBottom: '1px solid #ececec',
+    position: 'fixed',
+    width: '100%',
+    zIndex: 100
   }
 };
 

@@ -1,13 +1,11 @@
 import React, { useEffect } from 'react'
 
-import Container from 'react-bootstrap/Container';
+import CardColumns from 'react-bootstrap/CardColumns';
+import Alert from 'react-bootstrap/Alert';
 
 import CardItem from '../CardItem/CardItem';
-import Spinner from '../../components/Spinner/Spinner';
-import CardColumns from 'react-bootstrap/CardColumns';
 
 const CardList = ({ items, onLoadScroll }) => {
-
   useEffect(() => {
     window.addEventListener('scroll', () => {
       if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
@@ -18,19 +16,17 @@ const CardList = ({ items, onLoadScroll }) => {
 
   return (
     <>
-      <Container>
-        {items.length === 0 ? (
-          <Spinner />
-        ) : (
-            <CardColumns>
-              {items.map(item => {
-                return (
-                  <CardItem key={item.id} item={item} />
-                )
-              })}
-            </CardColumns>
-          )}
-      </Container>
+      <CardColumns>
+        {items.map(item => {
+          return (
+            <CardItem key={item.id} item={item} />
+          )
+        })}
+      </CardColumns>
+
+      {items && items.length === 0 && (
+        <Alert className='text-center' variant="secondary">No items were found</Alert>
+      )}
     </>
   );
 }

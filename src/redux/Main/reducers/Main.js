@@ -5,7 +5,8 @@ import ActionMain from '../actions/Main';
 const INITIAL_STATE = {
   pokemons: [],
   hasFailed: false,
-  isLoading: false
+  isLoading: false,
+  scrollAmount: 1
 };
 
 const reducer = handleActions(
@@ -17,12 +18,18 @@ const reducer = handleActions(
         isLoading: true
       };
     },
-    [ActionMain.ON_POKEMON_LOAD_SUCCESS]: (state, action) => {
+    [ActionMain.ON_POKEMON_LOAD_STOP]: state => {
+      return {
+        ...state,
+        isLoading: false
+      };
+    },
+    [ActionMain.ON_POKEMON_LOAD_SUCCESS_REQUEST]: (state, action) => {
       return {
         ...state,
         hasFailed: false,
         isLoading: false,
-        pokemons: action.payload
+        pokemons: state.pokemons.concat(action.payload)
       };
     },
     [ActionMain.ON_POKEMON_LOAD_FAIL]: state => {
@@ -31,6 +38,12 @@ const reducer = handleActions(
         hasFailed: true,
         isLoading: false,
         pokemons: []
+      };
+    },
+    [ActionMain.ON_SET_SCROLL_AMOUNT_LIST]: (state, action) => {
+      return {
+        ...state,
+        scrollAmount: action.payload
       };
     }
   },

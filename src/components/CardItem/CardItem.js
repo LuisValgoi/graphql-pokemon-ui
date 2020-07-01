@@ -6,8 +6,10 @@ import Badge from 'react-bootstrap/Badge';
 
 const CardItem = ({ item }) => {
   return (
-    <Card>
-      <Card.Header className='text-center'><Card.Title>{item.name}</Card.Title></Card.Header>
+    <Card key={`${item.id}${Date.now()}`}>
+      <Card.Header className='text-center'>
+        <Card.Text>{item.name}</Card.Text>
+      </Card.Header>
       <Card.Body>
         <Card.Img src={item.image} style={{ maxWidth: '300px', objectFit: 'contain', maxHeight: '100px' }}></Card.Img>
 

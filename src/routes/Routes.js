@@ -3,7 +3,8 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route } from "react-router-dom";
 
 import store from '../redux/store';
-import Main from '../pages/Main/Main'
+
+import Main from '../pages/Main'
 import Pokemon from '../pages/Pokemon'
 
 const Routes = () => {

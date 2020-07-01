@@ -7,7 +7,9 @@ function App() {
   return (
     <>
       <Shell title='GraphQL Pokemon UI' />
-      <Routes />
+      <div style={{ paddingTop: '100px' }}>
+        <Routes />
+      </div>
     </>
   );
 }
