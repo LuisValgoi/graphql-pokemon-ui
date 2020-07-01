@@ -6,8 +6,7 @@ const INITIAL_STATE = {
   pokemons: [],
   selectedItem: {},
   hasFailed: false,
-  isLoading: false,
-  scrollAmount: 1,
+  isLoading: false
 };
 
 const reducer = handleActions(
@@ -25,24 +24,7 @@ const reducer = handleActions(
         isLoading: true
       };
     },
-    [ActionMain.ON_POKEMON_LOAD_STOP]: state => {
-      return {
-        ...state,
-        isLoading: false
-      };
-    },
-    [ActionMain.ON_POKEMON_LOAD_SUCCESS_CONCAT]: (state, action) => {
-      for (let i = 0; i < action.payload.length; i++) {
-        action.payload[i].id = `${Date.now()}=${action.payload[i].id}`;
-      }
-      return {
-        ...state,
-        pokemons: state.pokemons.concat(action.payload),
-        hasFailed: false,
-        isLoading: false
-      };
-    },
-    [ActionMain.ON_POKEMON_LOAD_SUCCESS_REPLACE]: (state, action) => {
+    [ActionMain.ON_POKEMON_LOAD_SUCCESS]: (state, action) => {
       return {
         ...state,
         pokemons: action.payload,
@@ -62,6 +44,12 @@ const reducer = handleActions(
       return {
         ...state,
         selectedItem: action.payload
+      }
+    },
+    [ActionMain.ON_CLOSE_FAIL_NOTIFICATION]: (state, action) => {
+      return {
+        ...state,
+        hasFailed: false
       }
     }
   },

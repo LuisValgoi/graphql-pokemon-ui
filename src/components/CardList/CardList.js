@@ -6,13 +6,6 @@ import Alert from 'react-bootstrap/Alert';
 import CardItem from '../CardItem/CardItem';
 
 const CardList = ({ items, onSetSelectedItem, onShowDeleteModel, onLoadScroll }) => {
-
-  window.addEventListener('scroll', () => {
-    if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
-      onLoadScroll();
-    }
-  });
-
   return (
     <>
       <CardColumns>
