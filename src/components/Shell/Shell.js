@@ -1,5 +1,5 @@
-import React from 'react';
-import { useRouteMatch, Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation } from "react-router-dom";
 
 import BrowserURL from '../../util/BrowserURL';
 import Container from 'react-bootstrap/Container';
@@ -20,11 +20,16 @@ const style = {
 };
 
 const Shell = ({ title }) => {
-  const hideNavBack = useRouteMatch(BrowserURL.HOME);
+  const location = useLocation();
+  const [showNabBack, setShowNavBack] = useState(false);
+
+  useEffect(() => {
+    setShowNavBack(location.pathname !== BrowserURL.HOME);
+  }, [location]);
 
   return (
     <div style={style.shell} className='p-4'>
-      {hideNavBack && (
+      {showNabBack && (
         <Container style={style.breadcrumb}>
           <Link to={BrowserURL.HOME}>
             <Button variant='link'>Voltar</Button>

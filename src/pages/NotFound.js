@@ -16,6 +16,7 @@ const NotFound = () => {
   return (
     <div>
       <img src={notfound} style={style.image} alt='Not Found' />
+      <h3 className='text-center'>Hmmm, we could find this URL</h3>
     </div>
   );
 };
