@@ -1,0 +1,11 @@
+import { createAction } from 'redux-actions';
+
+const ON_MAIN_SHOW_DELETE_MODAL = createAction('ON_MAIN_SHOW_DELETE_MODAL');
+const ON_MAIN_CLOSE_DELETE_MODAL = createAction('ON_MAIN_CLOSE_DELETE_MODAL');
+const ON_MAIN_DELETE_PROCEED = createAction('ON_MAIN_DELETE_PROCEED');
+
+export default {
+  ON_MAIN_SHOW_DELETE_MODAL,
+  ON_MAIN_CLOSE_DELETE_MODAL,
+  ON_MAIN_DELETE_PROCEED
+};

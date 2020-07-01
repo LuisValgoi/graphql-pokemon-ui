@@ -5,7 +5,7 @@ import Alert from 'react-bootstrap/Alert';
 
 import CardItem from '../CardItem/CardItem';
 
-const CardList = ({ items, onLoadScroll }) => {
+const CardList = ({ items, onSetSelectedItem, onShowDeleteModel, onLoadScroll }) => {
 
   window.addEventListener('scroll', () => {
     if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
@@ -18,7 +18,7 @@ const CardList = ({ items, onLoadScroll }) => {
       <CardColumns>
         {items.map(item => {
           return (
-            <CardItem key={item.id} item={item} />
+            <CardItem onSetSelectedItem={onSetSelectedItem} onShowDeleteModel={onShowDeleteModel} key={item.id} item={item} />
           )
         })}
       </CardColumns>

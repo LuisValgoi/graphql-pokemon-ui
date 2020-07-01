@@ -4,9 +4,10 @@ import ActionMain from '../actions/Main';
 
 const INITIAL_STATE = {
   pokemons: [],
+  selectedItem: {},
   hasFailed: false,
   isLoading: false,
-  scrollAmount: 1
+  scrollAmount: 1,
 };
 
 const reducer = handleActions(
@@ -30,13 +31,21 @@ const reducer = handleActions(
         isLoading: false
       };
     },
-    [ActionMain.ON_POKEMON_LOAD_SUCCESS]: (state, action) => {
+    [ActionMain.ON_POKEMON_LOAD_SUCCESS_CONCAT]: (state, action) => {
       for (let i = 0; i < action.payload.length; i++) {
         action.payload[i].id = `${Date.now()}=${action.payload[i].id}`;
       }
       return {
         ...state,
         pokemons: state.pokemons.concat(action.payload),
+        hasFailed: false,
+        isLoading: false
+      };
+    },
+    [ActionMain.ON_POKEMON_LOAD_SUCCESS_REPLACE]: (state, action) => {
+      return {
+        ...state,
+        pokemons: action.payload,
         hasFailed: false,
         isLoading: false
       };
@@ -48,6 +57,12 @@ const reducer = handleActions(
         isLoading: false,
         pokemons: []
       };
+    },
+    [ActionMain.ON_SET_SELECTED_ITEM]: (state, action) => {
+      return {
+        ...state,
+        selectedItem: action.payload
+      }
     }
   },
   INITIAL_STATE
