@@ -1,23 +1,11 @@
-// lifecycle & hooks
 import React from 'react';
 
 import notfound from '../assets/notfound.png';
-
-const style = {
-  image: {
-    width: '30%',
-    display: 'block',
-    margin: 'auto',
-    position: 'relative'
-  }
-};
+import Fallback from '../components/Fallback/Fallback';
 
 const NotFound = () => {
   return (
-    <div>
-      <img src={notfound} style={style.image} alt='Not Found' />
-      <h3 className='text-center'>Hmmm, we could find this URL</h3>
-    </div>
+    <Fallback image={notfound} altImage='Not Found' text='Hmmm, we could find this URL' />
   );
 };
 
