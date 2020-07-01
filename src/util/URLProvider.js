@@ -1,8 +1,8 @@
-import URLs from './URL';
+import ApiURL from './ApiURL';
 
 export default {
   getUrl(key) {
-    const url = URLs[key];
+    const url = ApiURL[key];
 
     if (!url) {
       throw new Error(

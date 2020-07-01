@@ -1,8 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge';
+import URLProvider from '../../util/URLProvider';
+import BrowserURL from '../../util/BrowserURL';
 
 const style = {
   image: {
@@ -20,7 +23,6 @@ const CardItem = ({ item, onSetSelectedItem, onShowDeleteModel }) => {
 
   const _handleViewPokemon = () => {
     onSetSelectedItem(item.id);
-    // redirect to detail
   };
 
   return (
@@ -40,7 +42,9 @@ const CardItem = ({ item, onSetSelectedItem, onShowDeleteModel }) => {
       </Card.Body>
       <Card.Footer className="text-muted">
         <Button variant='link' onClick={_handleShowDeleteModel}>Delete</Button>
-        <Button className='float-right' onClick={_handleViewPokemon} variant='link'>View</Button>
+        <Link to={URLProvider.replace(BrowserURL.VIEW, item.id)}>
+          <Button className='float-right' onClick={_handleViewPokemon} variant='link'>View</Button>
+        </Link>
       </Card.Footer>
     </Card>
   );
