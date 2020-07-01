@@ -9,7 +9,7 @@ import URLProvider from '../../util/URLProvider';
 import { getMainLogRequests, getMainScrollAmount } from '../selector';
 
 function* _handleStopRequest() {
-  yield put(ActionMainNotification.ON_POKEMON_LOAD_LIMIT_NOTIFY_CUSTOM({ title: 'Oh Snap!', message: 'You have reached the maximun of items' }));
+  yield put(ActionMainNotification.ON_POKEMON_LOAD_LIMIT_NOTIFY_CUSTOM({ title: 'Oh Snap!', message: 'You have reached the maximum of items' }));
   yield put(ActionMain.ON_POKEMON_LOAD_STOP());
 }
 

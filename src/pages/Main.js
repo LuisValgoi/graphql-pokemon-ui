@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSelector, shallowEqual } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useActions } from '../hooks/useActions';
 
 import Container from 'react-bootstrap/Container';
@@ -13,8 +13,8 @@ import ActionMain from '../redux/Main/actions/Main';
 import ActionMainNotification from '../redux/Main/actions/MainNotification';
 
 const App = () => {
-  const data = useSelector(state => state.main.data, shallowEqual);
-  const notification = useSelector(state => state.main.notification, shallowEqual);
+  const data = useSelector(state => state.main.data);
+  const notification = useSelector(state => state.main.notification);
   const [onPokemonsLoad] = useActions([(scrolled) => ActionMain.ON_POKEMON_LOAD_REQUEST(scrolled)], []);
   const [onClosePokemonLoadLimitNotification] = useActions([() => ActionMainNotification.ON_POKEMON_LOAD_LIMIT_NOTIFY(false)], []);
   const [onSetScrollAmount] = useActions([(value) => ActionMain.ON_SET_SCROLL_AMOUNT_LIST(value)], []);

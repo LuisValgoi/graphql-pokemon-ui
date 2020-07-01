@@ -3,7 +3,10 @@ import Alert from 'react-bootstrap/Alert'
 import Container from 'react-bootstrap/Container';
 
 const style = {
-  notification: {
+  container: {
+    position: 'relative'
+  },
+  alert: {
     position: 'fixed',
     marginTop: '5px',
     left: '41%',
@@ -11,16 +14,16 @@ const style = {
   }
 };
 
-const Notification = React.memo(function Notification({ title, message, handleClose }) {
+const Notification = ({ title, message, handleClose }) => {
   return (
-    <Container style={{ position: 'relative' }}>
-      <Alert style={style.notification} variant='warning' onClose={handleClose} dismissible>
+    <Container style={style.container}>
+      <Alert style={style.alert} variant='warning' onClose={handleClose} dismissible>
         <Alert.Heading>{title}</Alert.Heading>
         <hr />
         <p>{message}</p>
       </Alert>
     </Container>
   )
-});
+};
 
 export default Notification;

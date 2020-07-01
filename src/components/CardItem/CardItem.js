@@ -4,6 +4,14 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge';
 
+const style = {
+  image: {
+    maxWidth: '300px',
+    objectFit: 'contain',
+    maxHeight: '100px'
+  }
+};
+
 const CardItem = ({ item }) => {
   return (
     <Card>
@@ -11,7 +19,7 @@ const CardItem = ({ item }) => {
         <Card.Text>{item.name}</Card.Text>
       </Card.Header>
       <Card.Body>
-        <Card.Img src={item.image} style={{ maxWidth: '300px', objectFit: 'contain', maxHeight: '100px' }}></Card.Img>
+        <Card.Img src={item.image} style={style.image}></Card.Img>
 
         <div>
           <Card.Title className='mt-1'>Types</Card.Title>

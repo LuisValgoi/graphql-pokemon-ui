@@ -1,18 +1,17 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import CardColumns from 'react-bootstrap/CardColumns';
 import Alert from 'react-bootstrap/Alert';
 
 import CardItem from '../CardItem/CardItem';
 
-const CardList = ({ items, isScrollBlocked, onLoadScroll }) => {
-  useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (((window.innerHeight + window.scrollY) >= document.body.scrollHeight) && !isScrollBlocked) {
-        onLoadScroll();
-      }
-    });
-  }, [onLoadScroll]);
+const CardList = ({ items, onLoadScroll }) => {
+
+  window.addEventListener('scroll', () => {
+    if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
+      onLoadScroll();
+    }
+  });
 
   return (
     <>

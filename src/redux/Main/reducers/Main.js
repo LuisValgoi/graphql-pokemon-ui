@@ -6,8 +6,7 @@ const INITIAL_STATE = {
   pokemons: [],
   hasFailed: false,
   isLoading: false,
-  scrollAmount: 1,
-  scrollBlock: false
+  scrollAmount: 1
 };
 
 const reducer = handleActions(
@@ -22,15 +21,13 @@ const reducer = handleActions(
       return {
         ...state,
         hasFailed: false,
-        isLoading: true,
-        scrollBlock: false
+        isLoading: true
       };
     },
     [ActionMain.ON_POKEMON_LOAD_STOP]: state => {
       return {
         ...state,
-        isLoading: false,
-        scrollBlock: true
+        isLoading: false
       };
     },
     [ActionMain.ON_POKEMON_LOAD_SUCCESS]: (state, action) => {
@@ -41,8 +38,7 @@ const reducer = handleActions(
         ...state,
         pokemons: state.pokemons.concat(action.payload),
         hasFailed: false,
-        isLoading: false,
-        scrollBlock: false,
+        isLoading: false
       };
     },
     [ActionMain.ON_POKEMON_LOAD_FAIL]: state => {
@@ -50,8 +46,7 @@ const reducer = handleActions(
         ...state,
         hasFailed: true,
         isLoading: false,
-        pokemons: [],
-        scrollBlock: false,
+        pokemons: []
       };
     }
   },
