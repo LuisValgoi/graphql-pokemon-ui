@@ -16,7 +16,8 @@ import ConfirmationModal from '../components/Modal/ConfirmationModal';
 const App = () => {
   const data = useSelector(state => state.main.data);
   const deleteModal = useSelector(state => state.main.delete);
-  const [onPokemonsLoad] = useActions([(scrolled) => ActionMain.ON_POKEMON_LOAD_REQUEST(scrolled)], []);
+  const [onPokemonsLoad] = useActions([() => ActionMain.ON_POKEMON_LOAD_REQUEST()], []);
+  const [onSearchPokemons] = useActions([(query) => ActionMain.ON_POKEMON_SEARCH(query)], []);
   const [onSetSelectedItem] = useActions([(object) => ActionMain.ON_SET_SELECTED_ITEM(object)], []);
   const [onCloseNotification] = useActions([() => ActionMain.ON_CLOSE_FAIL_NOTIFICATION()], []);
   const [onShowDeleteModal] = useActions([() => ActionMainDeleteModal.ON_MAIN_SHOW_DELETE_MODAL()], []);
@@ -37,7 +38,7 @@ const App = () => {
         <ConfirmationModal onClose={onCloseDeleteModal} onProceed={onProceedDeletion} title={deleteModal.title} body={deleteModal.body} />
       )}
 
-      <Toolbar />
+      <Toolbar onSearch={(query) => onSearchPokemons(query)} />
       <Container>
         <CardList items={data.pokemons} onSetSelectedItem={onSetSelectedItem} onShowDeleteModel={onShowDeleteModal} onLoadScroll={() => onPokemonsLoad()} />
         {data.isLoading && (

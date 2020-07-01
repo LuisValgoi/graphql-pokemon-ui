@@ -18,6 +18,16 @@ function* handlePokemonsLoad() {
   }
 }
 
+function* handlePokemonSearch(param) {
+  if (param.payload) {
+    const pokemons = yield select(getMainPokemons);
+    const filteredPokemons = pokemons.filter((pokemon) => pokemon.name.toLowerCase().trim().includes(param.payload.toLowerCase()));
+    yield put(ActionMain.ON_POKEMON_LOAD_SUCCESS(filteredPokemons));
+  } else {
+    yield handlePokemonsLoad();
+  }
+}
+
 function* handleDeletePokemon() {
   const id = yield select(getMainSelectedPokemon);
   const pokemons = yield select(getMainPokemons);
@@ -29,6 +39,7 @@ function* handleDeletePokemon() {
 
 function* watchMainSagas() {
   yield takeLeading(ActionMain.ON_POKEMON_LOAD_REQUEST.toString(), handlePokemonsLoad);
+  yield takeLeading(ActionMain.ON_POKEMON_SEARCH.toString(), handlePokemonSearch);
   yield takeLeading(ActionMainDeleteModal.ON_MAIN_DELETE_PROCEED.toString(), handleDeletePokemon);
 }
 
