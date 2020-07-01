@@ -4,9 +4,11 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 const ConfirmationModal = ({ onClose, onProceed, title, body }) => {
+  const ref = React.createRef();
+
   return (
     <>
-      <Modal show={true} onHide={onClose}>
+      <Modal animation={false} ref={ref} show={true} onHide={onClose}>
         <Modal.Header closeButton>
           <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
