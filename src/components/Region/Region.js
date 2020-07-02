@@ -1,0 +1,65 @@
+import React from 'react';
+
+export const RegionImage = (props) => {
+  const { children, style } = props;
+  const region = {
+    wrapper: {
+      border: '.5rem solid #F7F7F7',
+      backgroundColor: 'white',
+      verticalAlign: 'middle',
+      textAlign: 'center'
+    },
+    image: {
+      border: '1px solid rgba(0,0,0,.125)',
+      borderRadius: 'calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px)'
+    }
+  };
+
+  return (
+    <div style={{ ...region.wrapper, ...style }}>
+      <div style={region.image}>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+export const RegionContent = (props) => {
+  const { children, style } = props;
+  const region = {
+    wrapper: {
+      border: '.5rem solid #F7F7F7'
+    },
+    info: {
+      border: '1px solid rgba(0,0,0,.125)',
+      backgroundColor: 'white',
+      borderRadius: 'calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px)'
+    }
+  }
+
+  return (
+    <div style={{ ...region.wrapper, ...style }}>
+      <div style={region.info}>
+        {children}
+      </div>
+    </div >
+  );
+};
+
+export const Region = (props) => {
+  const { children } = props;
+  const region = {
+    wrapper: {
+      margin: '1rem 0 0 0',
+      padding: '.1rem',
+      border: '1px solid rgba(0,0,0,.125)',
+      borderRadius: 'calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px)',
+      backgroundColor: '#F7F7F7'
+    }
+  };
+  return (
+    <div style={region.wrapper}>
+      {children}
+    </div>
+  )
+};
