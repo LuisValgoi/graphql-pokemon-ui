@@ -3,53 +3,81 @@ import { handleActions } from 'redux-actions';
 import ActionMain from '../actions/Main';
 
 const INITIAL_STATE = {
-  pokemons: [],
-  selectedItem: {},
-  hasFailed: false,
-  isLoading: false
+  items: {
+    data: [],
+    hasFailed: false,
+    isLoading: false
+  },
+  item: {
+    data: {}
+  },
+  deletion: {
+    modalShown: false
+  }
 };
 
 const reducer = handleActions(
   {
-    [ActionMain.ON_SET_SCROLL_AMOUNT_LIST]: (state, action) => {
+    [ActionMain.ON_ITEMS_LOAD_REQUEST]: state => {
       return {
         ...state,
-        scrollAmount: action.payload
+        items: {
+          data: state.items.data,
+          hasFailed: false,
+          isLoading: true
+        }
       };
     },
-    [ActionMain.ON_POKEMON_LOAD_REQUEST]: state => {
+    [ActionMain.ON_ITEMS_LOAD_SUCCESS]: (state, action) => {
       return {
         ...state,
-        hasFailed: false,
-        isLoading: true
+        items: {
+          data: action.payload,
+          hasFailed: false,
+          isLoading: false
+        }
       };
     },
-    [ActionMain.ON_POKEMON_LOAD_SUCCESS]: (state, action) => {
+    [ActionMain.ON_ITEMS_LOAD_FAIL]: state => {
       return {
         ...state,
-        pokemons: action.payload,
-        hasFailed: false,
-        isLoading: false
+        items: {
+          data: [],
+          hasFailed: true,
+          isLoading: false
+        }
       };
     },
-    [ActionMain.ON_POKEMON_LOAD_FAIL]: state => {
+    [ActionMain.ON_DELETION_SHOW_MODAL]: (state, action) => {
       return {
         ...state,
-        hasFailed: true,
-        isLoading: false,
-        pokemons: []
-      };
-    },
-    [ActionMain.ON_SET_SELECTED_ITEM]: (state, action) => {
-      return {
-        ...state,
-        selectedItem: action.payload
+        item: {
+          data: action.payload
+        },
+        deletion: {
+          modalShown: true
+        }
       }
     },
-    [ActionMain.ON_CLOSE_FAIL_NOTIFICATION]: (state, action) => {
+    [ActionMain.ON_DELETION_CLOSE_MODAL]: state => {
       return {
         ...state,
-        hasFailed: false
+        item: {
+          data: {}
+        },
+        deletion: {
+          modalShown: false
+        }
+      }
+    },
+    [ActionMain.ON_CLOSE_FAIL_NOTIFICATION]: state => {
+      return {
+        ...state,
+        items: {
+          data: state.items.data,
+          hasFailed: false,
+          isLoading: state.items.isLoading
+        }
       }
     }
   },

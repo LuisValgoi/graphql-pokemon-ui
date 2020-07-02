@@ -15,18 +15,9 @@ const style = {
   }
 };
 
-const CardItem = ({ item, onSetSelectedItem, onShowDeleteModel }) => {
-  const _handleShowDeleteModel = () => {
-    onSetSelectedItem(item.id);
-    onShowDeleteModel();
-  };
-
-  const _handleViewPokemon = () => {
-    onSetSelectedItem(item.id);
-  };
-
+const CardItem = ({ item, onShowDeleteModel }) => {
   return (
-    <Card>
+    <Card key={item.id}>
       <Card.Header className='text-center'>
         <Card.Text>{item.name}</Card.Text>
       </Card.Header>
@@ -41,9 +32,9 @@ const CardItem = ({ item, onSetSelectedItem, onShowDeleteModel }) => {
         </div>
       </Card.Body>
       <Card.Footer className="text-muted">
-        <Button variant='link' onClick={_handleShowDeleteModel}>Delete</Button>
+        <Button variant='link' onClick={() => onShowDeleteModel(item)}>Delete</Button>
         <Link to={URLProvider.replace(BrowserURL.VIEW, item.id)}>
-          <Button className='float-right' onClick={_handleViewPokemon} variant='link'>View</Button>
+          <Button className='float-right' variant='link'>View</Button>
         </Link>
       </Card.Footer>
     </Card>

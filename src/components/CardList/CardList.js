@@ -5,13 +5,13 @@ import Alert from 'react-bootstrap/Alert';
 
 import CardItem from '../CardItem/CardItem';
 
-const CardList = ({ items, onSetSelectedItem, onShowDeleteModel, onLoadScroll }) => {
+const CardList = ({ items, onShowDeleteModel }) => {
   return (
     <>
       <CardColumns>
         {items.map(item => {
           return (
-            <CardItem onSetSelectedItem={onSetSelectedItem} onShowDeleteModel={onShowDeleteModel} key={item.id} item={item} />
+            <CardItem key={item.id} item={item} onShowDeleteModel={onShowDeleteModel} />
           )
         })}
       </CardColumns>

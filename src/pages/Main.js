@@ -10,19 +10,16 @@ import CardList from '../components/CardList/CardList';
 import Spinner from '../components/Spinner/Spinner';
 
 import ActionMain from '../redux/Main/actions/Main';
-import ActionMainDeleteModal from '../redux/Main/actions/MainDeleteModal';
 import ConfirmationModal from '../components/Modal/ConfirmationModal';
 
 const App = () => {
-  const data = useSelector(state => state.main.data);
-  const deleteModal = useSelector(state => state.main.delete);
-  const [onPokemonsLoad] = useActions([() => ActionMain.ON_POKEMON_LOAD_REQUEST()], []);
-  const [onSearchPokemons] = useActions([(query) => ActionMain.ON_POKEMON_SEARCH(query)], []);
-  const [onSetSelectedItem] = useActions([(object) => ActionMain.ON_SET_SELECTED_ITEM(object)], []);
+  const deletion = useSelector(state => state.main.deletion);
+  const items = useSelector(state => state.main.items);
+  const [onPokemonsLoad] = useActions([(query) => ActionMain.ON_ITEMS_LOAD_REQUEST(query)], []);
   const [onCloseNotification] = useActions([() => ActionMain.ON_CLOSE_FAIL_NOTIFICATION()], []);
-  const [onShowDeleteModal] = useActions([() => ActionMainDeleteModal.ON_MAIN_SHOW_DELETE_MODAL()], []);
-  const [onCloseDeleteModal] = useActions([() => ActionMainDeleteModal.ON_MAIN_CLOSE_DELETE_MODAL()], []);
-  const [onProceedDeletion] = useActions([() => ActionMainDeleteModal.ON_MAIN_DELETE_PROCEED()], []);
+  const [onShowDeletionModal] = useActions([(item) => ActionMain.ON_DELETION_SHOW_MODAL(item)], []);
+  const [onProceedDeletion] = useActions([() => ActionMain.ON_DELETION_PROCEED()], []);
+  const [onCloseDeletionModal] = useActions([() => ActionMain.ON_DELETION_CLOSE_MODAL()], []);
 
   useEffect(() => {
     onPokemonsLoad();
@@ -30,18 +27,18 @@ const App = () => {
 
   return (
     <>
-      {data.hasFailed && (
-        <Notification title={'Error'} message={'It seems that we had an error during the load'} onClose={() => onCloseNotification()} />
+      {items.hasFailed && (
+        <Notification title='Error' message='It seems that we had an error during the load' onClose={() => onCloseNotification()} />
       )}
 
-      {deleteModal.shown && (
-        <ConfirmationModal onClose={onCloseDeleteModal} onProceed={onProceedDeletion} title={deleteModal.title} body={deleteModal.body} />
+      {deletion.modalShown && (
+        <ConfirmationModal title='Warning' body='Do you want to delete this item?' onClose={onCloseDeletionModal} onProceed={onProceedDeletion} />
       )}
 
-      <Toolbar onSearch={(query) => onSearchPokemons(query)} />
+      <Toolbar onSearch={(query) => onPokemonsLoad(query)} />
       <Container>
-        <CardList items={data.pokemons} onSetSelectedItem={onSetSelectedItem} onShowDeleteModel={onShowDeleteModal} onLoadScroll={() => onPokemonsLoad()} />
-        {data.isLoading && (
+        <CardList items={items.data} onShowDeleteModel={onShowDeletionModal} onLoadScroll={() => onPokemonsLoad()} />
+        {items.isLoading && (
           <Spinner />
         )}
       </Container>
