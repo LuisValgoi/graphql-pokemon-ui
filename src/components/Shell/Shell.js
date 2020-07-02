@@ -15,7 +15,7 @@ const style = {
   },
   breadcrumb: {
     position: 'absolute',
-    marginTop: '18px'
+    marginTop: '10px'
   }
 };
 
@@ -30,8 +30,8 @@ const Shell = ({ title }) => {
   return (
     <div style={style.shell} className='p-4'>
       {showNabBack && (
-        <Container style={style.breadcrumb}>
-          <Link to={BrowserURL.HOME}>
+        <Container>
+          <Link style={style.breadcrumb} to={BrowserURL.HOME}>
             <Button variant='link'>Voltar</Button>
           </Link>
         </Container>
