@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useActions } from '../hooks/useActions';
 
-import Container from 'react-bootstrap/Container';
-
 import Notification from '../components/Notification/Notification';
 import Toolbar from '../components/Toolbar/Toolbar';
 import CardList from '../components/CardList/CardList';
@@ -36,12 +34,10 @@ const PokemonList = () => {
       )}
 
       <Toolbar onSearch={(query) => onPokemonsLoad(query)} />
-      <Container>
-        <CardList items={pokemons.data} onShowDeleteModel={onShowDeletionModal} />
-        {pokemons.isLoading && (
-          <Spinner />
-        )}
-      </Container>
+      <CardList items={pokemons.data} onShowDeleteModel={onShowDeletionModal} />
+      {pokemons.isLoading && (
+        <Spinner />
+      )}
     </>
   );
 };
