@@ -18,7 +18,7 @@ const PokemonDetail = ({ match }) => {
   return (
     <Region>
       <RegionTitle>
-        <h3>{pokemon.data.name}</h3>
+        <h4>{pokemon.data.name} - {pokemon.data.number}</h4>
       </RegionTitle>
       <RegionImage>
         <Image src={pokemon.data.image} alt='Pokemon' fluid />

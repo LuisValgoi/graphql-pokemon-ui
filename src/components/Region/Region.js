@@ -7,6 +7,8 @@ export const RegionTitle = (props) => {
       border: '.5rem solid #F7F7F7'
     },
     title: {
+      padding: '.5rem',
+      color: '#007bff',
       border: '1px solid rgba(0,0,0,.125)',
       backgroundColor: 'white',
       borderRadius: 'calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px)',
