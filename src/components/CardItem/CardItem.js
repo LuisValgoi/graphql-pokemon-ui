@@ -33,8 +33,8 @@ const CardItem = ({ item, onShowDeleteModel }) => {
       </Card.Body>
       <Card.Footer className="text-muted">
         <Button variant='link' onClick={() => onShowDeleteModel(item)}>Delete</Button>
-        <Link to={URLProvider.replace(BrowserURL.VIEW, item.id)}>
-          <Button className='float-right' variant='link'>View</Button>
+        <Link to={URLProvider.replace(BrowserURL.DETAIL, item.id)}>
+          <Button className='float-right' variant='link'>Detail</Button>
         </Link>
       </Card.Footer>
     </Card>

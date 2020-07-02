@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 
-import ActionMain from '../actions/Main';
+import ActionList from '../actions/List';
 
 const INITIAL_STATE = {
   items: {
@@ -18,7 +18,7 @@ const INITIAL_STATE = {
 
 const reducer = handleActions(
   {
-    [ActionMain.ON_ITEMS_LOAD_REQUEST]: state => {
+    [ActionList.ON_ITEMS_LOAD_REQUEST]: state => {
       return {
         ...state,
         items: {
@@ -28,7 +28,7 @@ const reducer = handleActions(
         }
       };
     },
-    [ActionMain.ON_ITEMS_LOAD_SUCCESS]: (state, action) => {
+    [ActionList.ON_ITEMS_LOAD_SUCCESS]: (state, action) => {
       return {
         ...state,
         items: {
@@ -38,7 +38,7 @@ const reducer = handleActions(
         }
       };
     },
-    [ActionMain.ON_ITEMS_LOAD_FAIL]: state => {
+    [ActionList.ON_ITEMS_LOAD_FAIL]: state => {
       return {
         ...state,
         items: {
@@ -48,7 +48,7 @@ const reducer = handleActions(
         }
       };
     },
-    [ActionMain.ON_DELETION_SHOW_MODAL]: (state, action) => {
+    [ActionList.ON_DELETION_SHOW_MODAL]: (state, action) => {
       return {
         ...state,
         item: {
@@ -59,7 +59,7 @@ const reducer = handleActions(
         }
       }
     },
-    [ActionMain.ON_DELETION_CLOSE_MODAL]: state => {
+    [ActionList.ON_DELETION_CLOSE_MODAL]: state => {
       return {
         ...state,
         item: {
@@ -70,7 +70,7 @@ const reducer = handleActions(
         }
       }
     },
-    [ActionMain.ON_CLOSE_FAIL_NOTIFICATION]: state => {
+    [ActionList.ON_CLOSE_FAIL_NOTIFICATION]: state => {
       return {
         ...state,
         items: {

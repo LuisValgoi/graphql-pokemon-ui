@@ -1,7 +1,11 @@
 import { combineReducers } from 'redux';
 
-import MainReducer from './Main/reducers/Main';
+import PokemonListReducer from './Pokemon/reducers/List';
+import PokemonDetailReducer from './Pokemon/reducers/Detail';
 
 export default combineReducers({
-  main: MainReducer
+  pokemon: combineReducers({
+    list: PokemonListReducer,
+    detail: PokemonDetailReducer
+  })
 });

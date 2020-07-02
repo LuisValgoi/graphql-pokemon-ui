@@ -1,2 +1,2 @@
-export const getPokemons = state => state.main.items.data;
-export const getSelectedPokemon = state => state.main.item.data;
+export const getPokemons = state => state.pokemon.list.items.data;
+export const getSelectedPokemon = state => state.pokemon.list.item.data;

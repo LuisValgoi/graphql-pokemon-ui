@@ -1,6 +1,6 @@
 export default {
   HOME: '/',
-  VIEW: '/pokemon/:id',
+  DETAIL: '/pokemon/:id',
   EDIT: '/pokemon/:id/edit',
   ANY: '*'
 };
