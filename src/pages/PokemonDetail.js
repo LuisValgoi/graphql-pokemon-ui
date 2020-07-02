@@ -13,7 +13,7 @@ const PokemonDetail = ({ match }) => {
   }, [match.params.id]);
 
   return (
-    <div>{pokemon.id}</div>
+    <div>{pokemon.data.id}</div>
   );
 }
 
