@@ -10,15 +10,15 @@ import store from './redux/store';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Provider store={store}>
+    <Provider store={store}>
+      <BrowserRouter>
         <ErrorBoundary>
           <Shell title='GraphQL Pokemon UI' />
           <div style={{ paddingTop: '100px' }} />
           <Routes />
         </ErrorBoundary>
-      </Provider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
