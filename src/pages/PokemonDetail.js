@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useActions } from '../hooks/useActions';
 
 import Image from 'react-bootstrap/Image'
-import { RegionImage, RegionContent, Region } from '../components/Region/Region';
+import { RegionImage, RegionContent, Region, RegionTitle } from '../components/Region/Region';
 
 import ActionDetail from '../redux/Pokemon/actions/Detail';
 
@@ -17,11 +17,14 @@ const PokemonDetail = ({ match }) => {
 
   return (
     <Region>
+      <RegionTitle>
+        <h3>{pokemon.data.name}</h3>
+      </RegionTitle>
       <RegionImage>
         <Image src={pokemon.data.image} alt='Pokemon' fluid />
       </RegionImage>
       <RegionContent>
-        <h1>uehauehua</h1>
+        <p>auehuahueha</p>
       </RegionContent>
     </Region>
   );

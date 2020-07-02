@@ -1,5 +1,29 @@
 import React from 'react';
 
+export const RegionTitle = (props) => {
+  const { children, style } = props;
+  const region = {
+    wrapper: {
+      border: '.5rem solid #F7F7F7'
+    },
+    title: {
+      border: '1px solid rgba(0,0,0,.125)',
+      backgroundColor: 'white',
+      borderRadius: 'calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px)',
+      verticalAlign: 'middle',
+      textAlign: 'center'
+    }
+  }
+
+  return (
+    <div style={{ ...region.wrapper, ...style }}>
+      <div style={region.title}>
+        {children}
+      </div>
+    </div >
+  );
+};
+
 export const RegionImage = (props) => {
   const { children, style } = props;
   const region = {
