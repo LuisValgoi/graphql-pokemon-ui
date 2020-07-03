@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect, Link, withRouter, useHistory } from 'react-router-dom';
 import { useActions } from '../hooks/useActions';
 
 import { RegionImage, RegionContent, Region, RegionTitle } from '../components/Region/Region';
@@ -23,6 +23,7 @@ const style = {
 };
 
 const PokemonDetail = ({ match }) => {
+  const history = useHistory();
   const pokemon = useSelector(state => state.pokemon.detail.item);
   const [onPokemonLoad] = useActions([(id) => ActionDetail.ON_ITEM_LOAD_REQUEST(id)], []);
 
@@ -101,11 +102,7 @@ const PokemonDetail = ({ match }) => {
             <Row className='mb-2'>
               <Col xs={2} sm={12} md={3} lg={2} style={style.row}><h5>Evolutions</h5></Col>
               <Col xs={10} sm={12} md={9} lg={10}>
-                {pokemon.data.evolutions ? (
-                  pokemon.data.evolutions.map(evolution => getEvolution(evolution))
-                ) : (
-                    getLastEvolution()
-                  )}
+                {getEvolutions()}
               </Col>
             </Row>
           </Container>
@@ -114,17 +111,20 @@ const PokemonDetail = ({ match }) => {
     );
   };
 
-  const getEvolution = (evolution) => {
+  const getEvolutions = () => {
     return (
-      <Link key={evolution.id} to={URLProvider.replace(BrowserURL.DETAIL, evolution.id)}>
-        <Button variant='outline-primary' className='mr-2'>{evolution.name}</Button>
-      </Link>
-    );
-  };
-
-  const getLastEvolution = (evolution) => {
-    return (
-      <Button disabled variant='outline-primary' className='mr-2'>This is the last evolution</Button>
+      <>
+        {pokemon.data.evolutions ? pokemon.data.evolutions.map(evolution => {
+          return (
+            <Link key={evolution.id} to={URLProvider.replace(BrowserURL.DETAIL, evolution.id)}>
+              <Button variant='outline-primary' className='mr-2'>{evolution.name}</Button>
+            </Link>
+          );
+        }) : (
+            <Button disabled variant='outline-primary' className='mr-2'>This is the last evolution</Button>
+          )}
+        <Button variant='link' onClick={() => history.goBack()} className='mr-2 float-right'>Go Back</Button>
+      </>
     );
   };
 
