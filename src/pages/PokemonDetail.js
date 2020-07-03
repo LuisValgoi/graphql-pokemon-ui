@@ -31,7 +31,24 @@ const PokemonDetail = ({ match }) => {
     onPokemonLoad(match.params.id);
   }, [match.params.id, onPokemonLoad]);
 
-  const getContent = () => {
+  const getEvolutions = useCallback(() => {
+    return (
+      <>
+        {pokemon.data.evolutions ? pokemon.data.evolutions.map(evolution => {
+          return (
+            <Link key={evolution.id} to={URLProvider.replace(BrowserURL.DETAIL, evolution.id)}>
+              <Button variant='outline-primary' className='mr-2'>{evolution.name}</Button>
+            </Link>
+          );
+        }) : (
+            <Button disabled variant='outline-primary' className='mr-2'>This is the last evolution</Button>
+          )}
+        <Button variant='link' onClick={() => history.goBack()} className='mr-2 float-right'>Go Back</Button>
+      </>
+    );
+  }, [history, pokemon.data]);
+
+  const getContent = useCallback(() => {
     return (
       <Region>
         <RegionTitle>
@@ -109,24 +126,7 @@ const PokemonDetail = ({ match }) => {
         </RegionContent>
       </Region>
     );
-  };
-
-  const getEvolutions = () => {
-    return (
-      <>
-        {pokemon.data.evolutions ? pokemon.data.evolutions.map(evolution => {
-          return (
-            <Link key={evolution.id} to={URLProvider.replace(BrowserURL.DETAIL, evolution.id)}>
-              <Button variant='outline-primary' className='mr-2'>{evolution.name}</Button>
-            </Link>
-          );
-        }) : (
-            <Button disabled variant='outline-primary' className='mr-2'>This is the last evolution</Button>
-          )}
-        <Button variant='link' onClick={() => history.goBack()} className='mr-2 float-right'>Go Back</Button>
-      </>
-    );
-  };
+  }, [getEvolutions, pokemon.data]);
 
   const getPokemonDetail = useCallback(() => {
     if (pokemon.hasFailed) {
