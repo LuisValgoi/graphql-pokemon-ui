@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect, Link, useHistory } from 'react-router-dom';
 import { useActions } from '../hooks/useActions';
@@ -128,7 +128,7 @@ const PokemonDetail = ({ match }) => {
     );
   };
 
-  const getPokemonDetail = () => {
+  const getPokemonDetail = useCallback(() => {
     if (pokemon.hasFailed) {
       return <Redirect to={BrowserURL.NOT_FOUND} />
     } else if (pokemon.data && Object.keys(pokemon.data).length !== 0) {
@@ -136,7 +136,7 @@ const PokemonDetail = ({ match }) => {
     } else {
       return <Spinner style={{ marginTop: '1rem' }} />
     }
-  };
+  }, [getContent, pokemon.data, pokemon.hasFailed]);
 
   return getPokemonDetail();
 }
