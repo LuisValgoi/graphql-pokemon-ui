@@ -29,7 +29,7 @@ const PokemonDetail = ({ match }) => {
 
   useEffect(() => {
     onPokemonLoad(match.params.id);
-  }, [match.params.id]);
+  }, [match.params.id, onPokemonLoad]);
 
   const getContent = () => {
     return (
