@@ -14,7 +14,6 @@ function* handleOnItemLoad(param) {
     if (!filtered) {
       throw Error();
     } else {
-      yield delay(1000);
       yield put(ActionDetail.ON_ITEM_LOAD_SUCCESS(filtered));
     }
   } catch (error) {
