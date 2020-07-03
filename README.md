@@ -2,6 +2,8 @@
 
 GraphQL Pokemon User Interface
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9073c094-1280-4115-a4c4-47d8417dfbdd/deploy-status)](https://app.netlify.com/sites/graphql-pokemon-ui-valgoi/deploys)
+
 ## How to Run
 
 ```
