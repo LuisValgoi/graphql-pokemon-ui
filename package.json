@@ -25,7 +25,7 @@
     "mock": "npm-run-all --parallel start:mock start:react",
     "start:mock": "nodemon --watch server/data --exec json-server --p 3001 server/mockserver.js --routes server/routes.json",
     "start:react": "react-scripts start",
-    "start:prod": "npm run build && npm run server",
+    "start:prod": "npm-run-all --parallel build server",
     "server": "node server/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
