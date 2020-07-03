@@ -59,7 +59,8 @@ export const RegionContent = (props) => {
     info: {
       border: '1px solid rgba(0,0,0,.125)',
       backgroundColor: 'white',
-      borderRadius: 'calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px)'
+      borderRadius: 'calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px)',
+      padding: '.5rem'
     }
   }
 
