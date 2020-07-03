@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useIsSmallScreen } from '../../hooks/useIsMobile';
+
 export const RegionTitle = (props) => {
   const { children, style } = props;
   const region = {
@@ -74,10 +76,11 @@ export const RegionContent = (props) => {
 };
 
 export const Region = (props) => {
+  const isSmallScreen = useIsSmallScreen();
   const { children } = props;
   const region = {
     wrapper: {
-      margin: '1rem 0 0 0',
+      margin: isSmallScreen ? '4rem 0 0 0' : '1rem 0 0 0',
       padding: '.1rem',
       border: '1px solid rgba(0,0,0,.125)',
       borderRadius: 'calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px)',

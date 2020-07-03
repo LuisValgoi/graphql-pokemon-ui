@@ -2,6 +2,7 @@ import React, { useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect, Link, useHistory, useRouteMatch } from 'react-router-dom';
 import { useActions } from '../hooks/useActions';
+import { useIsSmallScreen } from '../hooks/useIsMobile';
 
 import { RegionImage, RegionContent, Region, RegionTitle } from '../components/Region/Region';
 import Spinner from '../components/Spinner/Spinner';
@@ -24,6 +25,7 @@ const style = {
 
 const PokemonDetail = ({ match }) => {
   const history = useHistory();
+  const isSmallScreen = useIsSmallScreen();
   const pokemon = useSelector(state => state.pokemon.detail.item);
   const isDetailPage = useRouteMatch(BrowserURL.DETAIL).isExact;
   const [onPokemonLoad] = useActions([(id) => ActionDetail.ON_ITEM_LOAD_REQUEST(id)], []);
@@ -44,7 +46,7 @@ const PokemonDetail = ({ match }) => {
         }) : (
             <Button disabled variant='outline-primary' className='mr-2'>This is the last evolution</Button>
           )}
-        <Button variant='link' onClick={() => history.goBack()} className='mr-2 float-right'>Go Back</Button>
+        <Button variant='link' onClick={() => history.goBack()} className={`mr-2 ${isSmallScreen ? 'float-left' : 'float-right'}`}>Go Back</Button>
       </>
     );
   }, [history, pokemon.data]);
