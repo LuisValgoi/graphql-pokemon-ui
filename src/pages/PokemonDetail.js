@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Redirect, Link, withRouter, useHistory } from 'react-router-dom';
+import { Redirect, Link, useHistory } from 'react-router-dom';
 import { useActions } from '../hooks/useActions';
 
 import { RegionImage, RegionContent, Region, RegionTitle } from '../components/Region/Region';

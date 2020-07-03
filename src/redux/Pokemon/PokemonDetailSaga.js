@@ -1,4 +1,4 @@
-import { call, put, takeLeading, delay } from 'redux-saga/effects';
+import { call, put, takeLeading } from 'redux-saga/effects';
 
 import ActionDetail from './actions/Detail';
 import Request from '../../util/Request';
