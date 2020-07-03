@@ -81,8 +81,8 @@ const PokemonDetail = ({ match }) => {
             </Row>
             <hr />
             <Row className='mt-2'>
-              <Col xs={2} sm={12} md={3} lg={2}><h5>Types</h5></Col>
-              <Col xs={10} sm={12} md={9} lg={10}>
+              <Col xs={12} sm={12} md={3} lg={2}><h5>Types</h5></Col>
+              <Col xs={12} sm={12} md={9} lg={10}>
                 {pokemon.data.types.map(type => {
                   return <Badge key={type} className='mr-2' variant="info">{type}</Badge>
                 })}
@@ -90,8 +90,8 @@ const PokemonDetail = ({ match }) => {
             </Row>
             <hr />
             <Row>
-              <Col xs={2} sm={12} md={3} lg={2}><h5>Attacks</h5></Col>
-              <Col xs={10} sm={12} md={9} lg={10}>
+              <Col xs={12} sm={12} md={3} lg={2}><h5>Attacks</h5></Col>
+              <Col xs={12} sm={12} md={9} lg={10}>
                 {pokemon.data.attacks.special.map(attack => {
                   return <Badge key={attack.name} className='mr-2' variant="danger">{attack.name} ({attack.type}): {attack.damage}</Badge>
                 })}
@@ -99,8 +99,8 @@ const PokemonDetail = ({ match }) => {
             </Row>
             <hr />
             <Row>
-              <Col xs={2} sm={12} md={3} lg={2}><h5>Weakness</h5></Col>
-              <Col xs={10} sm={12} md={9} lg={10}>
+              <Col xs={12} sm={12} md={3} lg={2}><h5>Weakness</h5></Col>
+              <Col xs={12} sm={12} md={9} lg={10}>
                 {pokemon.data.weaknesses.map(weakness => {
                   return <Badge key={weakness} className='mr-2' variant="secondary">{weakness}</Badge>
                 })}
@@ -108,8 +108,8 @@ const PokemonDetail = ({ match }) => {
             </Row>
             <hr />
             <Row>
-              <Col xs={2} sm={12} md={3} lg={2}><h5>Resistant</h5></Col>
-              <Col xs={10} sm={12} md={9} lg={10}>
+              <Col xs={12} sm={12} md={3} lg={2}><h5>Resistant</h5></Col>
+              <Col xs={12} sm={12} md={9} lg={10}>
                 {pokemon.data.resistant.map(resist => {
                   return <Badge key={resist} className='mr-2' variant="primary">{resist}</Badge>
                 })}
@@ -117,8 +117,8 @@ const PokemonDetail = ({ match }) => {
             </Row>
             <hr />
             <Row className='mb-2'>
-              <Col xs={2} sm={12} md={3} lg={2} style={style.row}><h5>Evolutions</h5></Col>
-              <Col xs={10} sm={12} md={9} lg={10}>
+              <Col xs={12} sm={12} md={3} lg={2} style={style.row}><h5>Evolutions</h5></Col>
+              <Col xs={12} sm={12} md={9} lg={10}>
                 {getEvolutions()}
               </Col>
             </Row>
