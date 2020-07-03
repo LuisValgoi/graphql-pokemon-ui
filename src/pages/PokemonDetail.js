@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { Redirect, Link, useHistory } from 'react-router-dom';
+import { Redirect, Link, useHistory, useRouteMatch } from 'react-router-dom';
 import { useActions } from '../hooks/useActions';
 
 import { RegionImage, RegionContent, Region, RegionTitle } from '../components/Region/Region';
@@ -25,11 +25,12 @@ const style = {
 const PokemonDetail = ({ match }) => {
   const history = useHistory();
   const pokemon = useSelector(state => state.pokemon.detail.item);
+  const isDetailPage = useRouteMatch(BrowserURL.DETAIL).isExact;
   const [onPokemonLoad] = useActions([(id) => ActionDetail.ON_ITEM_LOAD_REQUEST(id)], []);
 
   useEffect(() => {
     onPokemonLoad(match.params.id);
-  }, [match.params.id, onPokemonLoad]);
+  }, [match.params.id, onPokemonLoad, isDetailPage]);
 
   const getEvolutions = useCallback(() => {
     return (
