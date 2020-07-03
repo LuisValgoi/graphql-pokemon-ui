@@ -9,7 +9,6 @@ function* handleOnItemLoad(param) {
     const url = URLProvider.replace(URLProvider.getUrl('GET_POKEMON_BY_ID'), param.payload);
     const api = () => Request.get(url);
     const { data } = yield call(api);
-    debugger;
     const filtered = data.data.pokemons.filter(pokemon => pokemon.id === param.payload)[0];
     yield put(ActionDetail.ON_ITEM_LOAD_SUCCESS(filtered));
   } catch (error) {
