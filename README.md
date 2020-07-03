@@ -11,10 +11,17 @@ yarn mock
 
 ## Available Scripts
 
-### `yarn mock`
+`yarn mock`: Runs the app in the development mode opening [http://localhost:3000](http://localhost:3000) w/ the [:3001](http://localhost:3001) in background pointing to the mockserver.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser w/ the [:3001](http://localhost:3001) in background w/ the mockserver
+## Dependencies
+
+- `axios`: To trigger HTTP requests.
+- `react-bootstrap`: UI Lib for React.
+- `json-server`: The mock server.
+- `react-redux`: State container.
+- `redux-actions`: Better way to trigger actions w/ redux-saga.
+- `redux-saga`: Mess with the components side-effects.
+- `react-router-dom`: Routing.
 
 ## Server
 
