@@ -49,7 +49,7 @@ const PokemonDetail = ({ match }) => {
         <Button variant='link' onClick={() => history.goBack()} className={`mr-2 ${isSmallScreen ? 'float-left' : 'float-right'}`}>Go Back</Button>
       </>
     );
-  }, [history, pokemon.data]);
+  }, [history, isSmallScreen, pokemon.data.evolutions]);
 
   const getContent = useCallback(() => {
     return (
