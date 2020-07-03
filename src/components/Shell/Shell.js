@@ -32,7 +32,7 @@ const Shell = ({ title }) => {
       {showNabBack && (
         <Container>
           <Link style={style.breadcrumb} to={BrowserURL.HOME}>
-            <Button variant='link'>Go Back</Button>
+            <Button variant='link'>Home</Button>
           </Link>
         </Container>
       )}
