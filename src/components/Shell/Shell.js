@@ -24,14 +24,14 @@ const Shell = ({ title }) => {
   const [showNabBack, setShowNavBack] = useState(false);
 
   useEffect(() => {
-    setShowNavBack(location.pathname !== BrowserURL.HOME);
+    setShowNavBack(location.pathname !== BrowserURL.LIST);
   }, [location]);
 
   return (
     <div style={style.shell} className='p-4'>
       {showNabBack && (
         <Container>
-          <Link style={style.breadcrumb} to={BrowserURL.HOME}>
+          <Link style={style.breadcrumb} to={BrowserURL.LIST}>
             <Button variant='link'>Home</Button>
           </Link>
         </Container>

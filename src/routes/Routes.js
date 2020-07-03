@@ -10,7 +10,7 @@ import NotFound from '../pages/NotFound';
 const Routes = () => {
   return (
     <Switch>
-      <Route path={BrowserURL.HOME} exact component={PokemonList} />
+      <Route path={BrowserURL.LIST} exact component={PokemonList} />
       <Route path={BrowserURL.DETAIL} exact component={PokemonDetail} />
       <Route path={BrowserURL.EDIT} exact component={PokemonEdit} />
       <Route path={BrowserURL.NOT_FOUND} exact component={NotFound} />
