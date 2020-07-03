@@ -37,6 +37,24 @@ The following query gets the 50 first records @ database
     id
     number
     name
+    weight {
+      minimum
+      maximum
+    }
+    height {
+      minimum
+      maximum
+    }
+    classification
+    resistant
+    weaknesses
+    fleeRate
+    maxCP
+    evolutionRequirements {
+      amount
+      name
+    }
+    maxHP
     image
     types
     attacks {
