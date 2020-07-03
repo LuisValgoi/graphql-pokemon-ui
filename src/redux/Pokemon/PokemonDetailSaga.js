@@ -10,7 +10,12 @@ function* handleOnItemLoad(param) {
     const api = () => Request.get(url);
     const { data } = yield call(api);
     const filtered = data.data.pokemons.filter(pokemon => pokemon.id === param.payload)[0];
-    yield put(ActionDetail.ON_ITEM_LOAD_SUCCESS(filtered));
+
+    if (!filtered) {
+      throw Error();
+    } else {
+      yield put(ActionDetail.ON_ITEM_LOAD_SUCCESS(filtered));
+    }
   } catch (error) {
     yield put(ActionDetail.ON_ITEM_LOAD_FAIL());
   }

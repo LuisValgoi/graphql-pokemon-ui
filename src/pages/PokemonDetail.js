@@ -11,7 +11,6 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Badge from 'react-bootstrap/Badge'
 import Button from 'react-bootstrap/Button'
-import Error from './Error';
 
 import URLProvider from '../util/URLProvider';
 import BrowserURL from '../util/BrowserURL';
@@ -117,7 +116,7 @@ const PokemonDetail = ({ match }) => {
 
   const getEvolution = (evolution) => {
     return (
-      <Link to={URLProvider.replace(BrowserURL.DETAIL, evolution.id)}>
+      <Link key={evolution.id} to={URLProvider.replace(BrowserURL.DETAIL, evolution.id)}>
         <Button variant='outline-primary' className='mr-2'>{evolution.name}</Button>
       </Link>
     );
@@ -131,11 +130,11 @@ const PokemonDetail = ({ match }) => {
 
   const getPokemonDetail = () => {
     if (pokemon.hasFailed) {
-      return <Redirect to={Error} />
-    } else if (!pokemon.isLoading && !pokemon.hasFailed && Object.keys(pokemon.data).length !== 0) {
+      return <Redirect to={BrowserURL.NOT_FOUND} />
+    } else if (pokemon.data && Object.keys(pokemon.data).length !== 0) {
       return getContent();
     } else {
-      return <Spinner />
+      return <Spinner style={{ marginTop: '1rem' }} />
     }
   };
 
