@@ -1,0 +1,11 @@
+import { createAction } from 'redux-actions';
+
+const ON_SHOW_NOTIFICATION = createAction('ON_SHOW_NOTIFICATION');
+const ON_CLOSE_NOTIFICATION = createAction('ON_CLOSE_NOTIFICATION');
+const ON_CLOSE_FOREVER_NOTIFICATION = createAction('ON_CLOSE_FOREVER_NOTIFICATION');
+
+export default {
+  ON_SHOW_NOTIFICATION,
+  ON_CLOSE_NOTIFICATION,
+  ON_CLOSE_FOREVER_NOTIFICATION
+};

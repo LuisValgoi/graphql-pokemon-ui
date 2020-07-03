@@ -70,7 +70,7 @@ const reducer = handleActions(
         }
       }
     },
-    [ActionList.ON_CLOSE_FAIL_NOTIFICATION]: state => {
+    [ActionList.ON_CLOSE_ERROR_LOAD_NOTIFICATION]: state => {
       return {
         ...state,
         items: {

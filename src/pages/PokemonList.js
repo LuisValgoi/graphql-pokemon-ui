@@ -9,12 +9,16 @@ import Spinner from '../components/Spinner/Spinner';
 import ConfirmationModal from '../components/Modal/ConfirmationModal';
 
 import ActionList from '../redux/Pokemon/actions/List';
+import ActionNotification from '../redux/ViewSettings/actions/Notification';
 
 const PokemonList = () => {
   const deletion = useSelector(state => state.pokemon.list.deletion);
   const pokemons = useSelector(state => state.pokemon.list.items);
+  const notification = useSelector(state => state.viewSettings.notification);
   const [onPokemonsLoad] = useActions([(query) => ActionList.ON_ITEMS_LOAD_REQUEST(query)], []);
-  const [onCloseNotification] = useActions([() => ActionList.ON_CLOSE_FAIL_NOTIFICATION()], []);
+  const [onShowNotification] = useActions([() => ActionNotification.ON_SHOW_NOTIFICATION()], []);
+  const [onCloseErrorLoadNotification] = useActions([() => ActionList.ON_CLOSE_ERROR_LOAD_NOTIFICATION()], []);
+  const [onCloseForeverNotification] = useActions([() => ActionNotification.ON_CLOSE_FOREVER_NOTIFICATION()], []);
   const [onShowDeletionModal] = useActions([(item) => ActionList.ON_DELETION_SHOW_MODAL(item)], []);
   const [onProceedDeletion] = useActions([() => ActionList.ON_DELETION_PROCEED()], []);
   const [onCloseDeletionModal] = useActions([() => ActionList.ON_DELETION_CLOSE_MODAL()], []);
@@ -23,10 +27,20 @@ const PokemonList = () => {
     onPokemonsLoad();
   }, [onPokemonsLoad]);
 
+  useEffect(() => {
+    if (!notification.isClosedForever) {
+      onShowNotification();
+    }
+  }, [notification.isClosedForever, onShowNotification, pokemons.hasFailed]);
+
   return (
     <>
       {pokemons.hasFailed && (
-        <Notification title='Error' message='It seems that we had an error during the load' onClose={onCloseNotification} />
+        <Notification title='Error' variant='danger' message='It seems that we had an error at the load' onClose={onCloseErrorLoadNotification} />
+      )}
+
+      {notification.isShown && !notification.isClosedForever && !pokemons.hasFailed && (
+        <Notification title='Warning' variant='info' message='Remember that this is a mockserver data' onClose={onCloseForeverNotification} />
       )}
 
       {deletion.modalShown && (
