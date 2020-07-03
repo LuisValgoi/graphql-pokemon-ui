@@ -11,7 +11,7 @@ yarn mock
 
 ## Available Scripts
 
-`yarn mock`: Runs the app in the development mode opening [http://localhost:3000](http://localhost:3000) w/ the [:3001](http://localhost:3001) in background pointing to the mockserver.
+`yarn mock`: Runs the app @ [:3000](http://localhost:3000) w/ the mockserver @ [:3001](http://localhost:3001) in background.
 
 ## Dependencies
 
