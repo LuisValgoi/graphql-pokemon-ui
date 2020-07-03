@@ -1,4 +1,4 @@
-import { call, put, takeLeading } from 'redux-saga/effects';
+import { call, put, takeLeading, delay } from 'redux-saga/effects';
 
 import ActionDetail from './actions/Detail';
 import Request from '../../util/Request';
@@ -14,6 +14,7 @@ function* handleOnItemLoad(param) {
     if (!filtered) {
       throw Error();
     } else {
+      yield delay(1000);
       yield put(ActionDetail.ON_ITEM_LOAD_SUCCESS(filtered));
     }
   } catch (error) {

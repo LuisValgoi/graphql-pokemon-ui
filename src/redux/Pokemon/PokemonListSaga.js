@@ -1,4 +1,4 @@
-import { call, put, takeLeading, select } from 'redux-saga/effects';
+import { call, put, takeLeading, select, delay } from 'redux-saga/effects';
 import { getPokemons, getSelectedPokemon } from '../selector';
 
 import ActionList from './actions/List';
@@ -19,6 +19,7 @@ function* _fetchRecords() {
 }
 
 function* handleOnItemsLoad(param) {
+  yield delay(1000);
   try {
     if (param.payload) {
       yield _filterRecords(param.payload);
