@@ -11,11 +11,13 @@ GraphQL Pokemon User Interface
 ```
 yarn
 yarn mock
+yarn start
 ```
 
 ## Available Scripts
 
 `yarn mock`: Runs the app @ [:3000](http://localhost:3000) w/ the mockserver @ [:3001](http://localhost:3001) in background.
+`yarn start`: Runs the app @ [:3000](http://localhost:3000) w/ the server @ [:9000](http://localhost:9000) in background.
 
 ## Dependencies
 

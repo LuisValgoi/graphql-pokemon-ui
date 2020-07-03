@@ -1,3 +1,0 @@
-[[redirects]]
-  from = "/pokemons"
-  to = "https://graphql-pokemon-server.netlify.app/.netlify/functions/api/v1/pokemons"
