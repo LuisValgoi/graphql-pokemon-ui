@@ -15,7 +15,8 @@ function* _fetchRecords() {
   const url = URLProvider.getUrl('GET_POKEMONS');
   const api = () => Request.get(url);
   const { data } = yield call(api);
-  yield put(ActionList.ON_ITEMS_LOAD_SUCCESS(data.data.query._pokemonsLEhzg));
+  debugger;
+  yield put(ActionList.ON_ITEMS_LOAD_SUCCESS(data.data.pokemons));
 }
 
 function* handleOnItemsLoad(param) {

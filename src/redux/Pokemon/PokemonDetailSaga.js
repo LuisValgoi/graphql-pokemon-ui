@@ -9,7 +9,8 @@ function* handleOnItemLoad(param) {
     const url = URLProvider.replace(URLProvider.getUrl('GET_POKEMON_BY_ID'), param.payload);
     const api = () => Request.get(url);
     const { data } = yield call(api);
-    const filtered = data.data.query._pokemonsLEhzg.filter(pokemon => pokemon.id === param.payload)[0];
+    debugger;
+    const filtered = data.data.pokemons.filter(pokemon => pokemon.id === param.payload)[0];
     yield put(ActionDetail.ON_ITEM_LOAD_SUCCESS(filtered));
   } catch (error) {
     yield put(ActionDetail.ON_ITEM_LOAD_FAIL());
