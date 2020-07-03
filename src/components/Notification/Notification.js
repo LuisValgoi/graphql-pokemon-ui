@@ -14,10 +14,10 @@ const style = {
   }
 };
 
-const Notification = ({ title, message, onClose }) => {
+const Notification = ({ title, message, variant, onClose }) => {
   return (
     <Container style={style.container}>
-      <Alert style={style.alert} variant='warning' onClose={onClose} dismissible>
+      <Alert style={style.alert} variant={variant ?? 'warning'} onClose={onClose} dismissible>
         <Alert.Heading>{title}</Alert.Heading>
         <hr />
         <p>{message}</p>
