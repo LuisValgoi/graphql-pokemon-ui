@@ -2,9 +2,9 @@ import React from 'react';
 import { Route, Switch } from "react-router-dom";
 import BrowserURL from '../util/BrowserURL';
 
-import PokemonList from '../pages/PokemonList';
-import PokemonDetail from '../pages/PokemonDetail';
-import PokemonEdit from '../pages/PokemonEdit';
+import PokemonList from '../pages/List/PokemonList';
+import PokemonDetail from '../pages/Detail/PokemonDetail';
+import PokemonEdit from '../pages/Edit/PokemonEdit';
 import NotFound from '../pages/NotFound';
 
 const Routes = () => {

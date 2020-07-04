@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useActions } from '../hooks/useActions';
+import { useActions } from '../../hooks/useActions';
 
-import Notification from '../components/Notification/Notification';
-import Toolbar from '../components/Toolbar/Toolbar';
-import CardList from '../components/CardList/CardList';
-import Spinner from '../components/Spinner/Spinner';
-import ConfirmationModal from '../components/Modal/ConfirmationModal';
+import Notification from '../../components/Notification/Notification';
+import Toolbar from '../../components/Toolbar/Toolbar';
+import CardList from '../../components/CardList/CardList';
+import Spinner from '../../components/Spinner/Spinner';
+import ConfirmationModal from '../../components/Modal/ConfirmationModal';
 
-import ActionList from '../redux/Pokemon/actions/List';
-import ActionNotification from '../redux/ViewSettings/actions/Notification';
+import ActionList from '../../redux/Pokemon/actions/List';
+import ActionNotification from '../../redux/ViewSettings/actions/Notification';
 
 const PokemonList = () => {
   const deletion = useSelector(state => state.pokemon.list.deletion);

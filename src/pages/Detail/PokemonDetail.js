@@ -1,21 +1,21 @@
 import React, { useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect, Link, useHistory, useRouteMatch } from 'react-router-dom';
-import { useActions } from '../hooks/useActions';
-import { useIsSmallScreen } from '../hooks/useIsMobile';
+import { useActions } from '../../hooks/useActions';
+import { useIsSmallScreen } from '../../hooks/useIsMobile';
 
-import { RegionImage, RegionContent, Region, RegionTitle } from '../components/Region/Region';
-import Spinner from '../components/Spinner/Spinner';
+import { RegionImage, RegionContent, Region, RegionTitle } from '../../components/Region/Region';
+import Spinner from '../../components/Spinner/Spinner';
 import Image from 'react-bootstrap/Image'
-import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Badge from 'react-bootstrap/Badge'
 import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
 
-import URLProvider from '../util/URLProvider';
-import BrowserURL from '../util/BrowserURL';
-import ActionDetail from '../redux/Pokemon/actions/Detail';
+import URLProvider from '../../util/URLProvider';
+import BrowserURL from '../../util/BrowserURL';
+import ActionDetail from '../../redux/Pokemon/actions/Detail';
 
 const style = {
   row: {
