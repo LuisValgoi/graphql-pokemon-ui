@@ -5,12 +5,17 @@ import URLProvider from '../../util/URLProvider';
 
 import ActionEdit from './actions/Edit';
 
+function castResponse(data) {
+  return data;
+}
+
 function* handleOnItemLoad(id) {
   try {
     const url = URLProvider.replace(URLProvider.getUrl('GET_POKEMON_BY_ID'), id.payload);
     const api = () => Request.get(url);
     const { data } = yield call(api);
-    yield put(ActionEdit.ON_ITEM_LOAD_SUCCESS(data));
+    const response = castResponse(data)
+    yield put(ActionEdit.ON_ITEM_LOAD_SUCCESS(response));
   } catch (error) {
     yield put(ActionEdit.ON_ITEM_LOAD_FAIL());
   }
