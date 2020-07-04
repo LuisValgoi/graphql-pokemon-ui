@@ -49,7 +49,7 @@ const Shell = ({ title }) => {
           </Col>
           <Col xs={2} sm={2} md={1} lg={1}>
             {showNavEdit && (
-              <Link to={BrowserURL.EDIT}>
+              <Link to={URLProvider.replace(BrowserURL.EDIT, pokemon.data.id)}>
                 <Button variant='primary'>Edit</Button>
               </Link>
             )}
