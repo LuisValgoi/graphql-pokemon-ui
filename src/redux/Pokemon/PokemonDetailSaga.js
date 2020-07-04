@@ -8,18 +8,12 @@ import ActionModal from '../ViewSettings/actions/Modal';
 import ActionDetail from './actions/Detail';
 import ActionList from './actions/List';
 
-function* handleOnItemLoad(param) {
+function* handleOnItemLoad(id) {
   try {
-    const url = URLProvider.replace(URLProvider.getUrl('GET_POKEMON_BY_ID'), param.payload);
+    const url = URLProvider.replace(URLProvider.getUrl('GET_POKEMON_BY_ID'), id.payload);
     const api = () => Request.get(url);
     const { data } = yield call(api);
-    const filtered = data.data.pokemons.filter(pokemon => pokemon.id === param.payload)[0];
-
-    if (!filtered) {
-      throw Error();
-    } else {
-      yield put(ActionDetail.ON_ITEM_LOAD_SUCCESS(filtered));
-    }
+    yield put(ActionDetail.ON_ITEM_LOAD_SUCCESS(data));
   } catch (error) {
     yield put(ActionDetail.ON_ITEM_LOAD_FAIL());
   }
