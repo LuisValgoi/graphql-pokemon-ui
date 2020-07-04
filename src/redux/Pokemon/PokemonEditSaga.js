@@ -21,8 +21,8 @@ function* handleOnItemLoad(id) {
   }
 }
 
-function* watchPokemonDetailSaga() {
+function* watchPokemonEditSaga() {
   yield takeLeading(ActionEdit.ON_ITEM_LOAD_REQUEST.toString(), handleOnItemLoad);
 }
 
-export default watchPokemonDetailSaga;
+export default watchPokemonEditSaga;
