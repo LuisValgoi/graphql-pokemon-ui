@@ -1,8 +1,9 @@
 import { call, put, takeLeading, delay } from 'redux-saga/effects';
 
-import ActionList from './actions/List';
 import Request from '../../util/Request';
 import URLProvider from '../../util/URLProvider';
+
+import ActionList from './actions/List';
 
 function* handleOnItemsLoad(param) {
   try {
