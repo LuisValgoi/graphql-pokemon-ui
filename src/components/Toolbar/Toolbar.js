@@ -7,7 +7,7 @@ import Row from 'react-bootstrap/Row';
 
 const Toolbar = ({ onSearch }) => {
   return (
-    <Row className='pt-3 pb-3'>
+    <Row className='pb-3'>
       <Col sm={12}>
         <InputGroup>
           <FormControl onInput={(e) => onSearch(e.target.value)} placeholder="Search by a pokemon name" />

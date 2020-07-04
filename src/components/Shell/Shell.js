@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 import BrowserURL from '../../util/BrowserURL';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
+import URLProvider from '../../util/URLProvider';
 
 const style = {
   shell: {
@@ -12,33 +17,45 @@ const style = {
     position: 'fixed',
     width: '100%',
     zIndex: 100
-  },
-  breadcrumb: {
-    position: 'absolute',
-    marginTop: '10px'
   }
 };
 
 const Shell = ({ title }) => {
   const location = useLocation();
-  const [showNabBack, setShowNavBack] = useState(false);
+  const pokemon = useSelector(state => state.pokemon.detail.item);
+  const [showNavList, setShowNavList] = useState(false);
+  const [showNavEdit, setShowNavEdit] = useState(false);
 
   useEffect(() => {
-    setShowNavBack(location.pathname !== BrowserURL.LIST);
-  }, [location]);
+    setShowNavList(location.pathname !== BrowserURL.LIST);
+    setShowNavEdit(location.pathname === URLProvider.replace(BrowserURL.DETAIL, pokemon.data.id));
+  }, [location, pokemon]);
 
   return (
     <div style={style.shell} className='p-4'>
-      {showNabBack && (
-        <Container>
-          <Link style={style.breadcrumb} to={BrowserURL.LIST}>
-            <Button variant='link'>Home</Button>
-          </Link>
-        </Container>
-      )}
-      <h1 className='text-center'>
-        {title}
-      </h1>
+      <Container>
+        <Row className='align-items-center'>
+          <Col xs={2} sm={2} md={1} lg={1}>
+            {showNavList && (
+              <Link to={BrowserURL.LIST}>
+                <Button variant='link'>Home</Button>
+              </Link>
+            )}
+          </Col>
+          <Col xs={8} sm={8} md={10} lg={10}>
+            <h2 className='text-center'>
+              {title}
+            </h2>
+          </Col>
+          <Col xs={2} sm={2} md={1} lg={1}>
+            {showNavEdit && (
+              <Link to={BrowserURL.EDIT}>
+                <Button variant='primary'>Edit</Button>
+              </Link>
+            )}
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }
