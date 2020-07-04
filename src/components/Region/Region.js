@@ -80,7 +80,7 @@ export const Region = (props) => {
   const { children } = props;
   const region = {
     wrapper: {
-      margin: isSmallScreen ? '4rem 0 0 0' : '1rem 0 0 0',
+      marginTop: isSmallScreen ? '4rem' : '1rem',
       padding: '.1rem',
       border: '1px solid rgba(0,0,0,.125)',
       borderRadius: 'calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px)',
