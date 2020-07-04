@@ -1,30 +1,19 @@
-import { call, put, takeLeading, select } from 'redux-saga/effects';
-import { getPokemons } from '../selector';
+import { call, put, takeLeading, delay } from 'redux-saga/effects';
 
 import ActionList from './actions/List';
 import Request from '../../util/Request';
 import URLProvider from '../../util/URLProvider';
 
-function* _filterRecords(value) {
-  const pokemons = yield select(getPokemons);
-  const filteredPokemons = pokemons.filter((pokemon) => pokemon.name.toLowerCase().trim().includes(value.toLowerCase()));
-  yield put(ActionList.ON_ITEMS_LOAD_SUCCESS(filteredPokemons));
-}
-
-function* _fetchRecords() {
-  const url = URLProvider.getUrl('GET_POKEMONS');
-  const api = () => Request.get(url);
-  const { data } = yield call(api);
-  yield put(ActionList.ON_ITEMS_LOAD_SUCCESS(data.data.pokemons));
-}
-
 function* handleOnItemsLoad(param) {
   try {
-    if (param.payload) {
-      yield _filterRecords(param.payload);
-    } else {
-      yield _fetchRecords();
-    }
+    const queryParam = param.payload;
+    const urlParams = queryParam ? { params: { query: queryParam } } : null;
+    if (urlParams) yield delay(500) // debounce
+
+    const url = URLProvider.getUrl('GET_POKEMONS');
+    const api = () => Request.get(url, urlParams);
+    const { data } = yield call(api);
+    yield put(ActionList.ON_ITEMS_LOAD_SUCCESS(data.data.pokemons));
   } catch (error) {
     yield put(ActionList.ON_ITEMS_LOAD_FAIL());
   }
