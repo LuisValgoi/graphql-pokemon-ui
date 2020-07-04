@@ -2,11 +2,9 @@ import React from 'react';
 
 import Spinner from 'react-bootstrap/Spinner';
 
-function SpinnerInternal(props) {
-  const { style } = props;
-
+function SpinnerInternal() {
   return (
-    <div className='text-center' style={style}>
+    <div className='text-center' style={{ marginTop: '1rem' }}>
       <Spinner animation="border" />
     </div >
   );
