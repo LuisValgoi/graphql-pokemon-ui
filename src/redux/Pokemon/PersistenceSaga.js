@@ -13,8 +13,13 @@ function* handleOnItemDelete() {
   yield put(ActionModal.ON_CLOSE_MODAL());
 }
 
+function* handleOnItemSave(item) {
+  alert(JSON.stringify(item.payload));
+}
+
 function* watchPersistenceSaga() {
   yield takeLeading(ActionPersistence.ON_ITEM_DELETE.toString(), handleOnItemDelete);
+  yield takeLeading(ActionPersistence.ON_ITEM_SAVE.toString(), handleOnItemSave);
 }
 
 export default watchPersistenceSaga;

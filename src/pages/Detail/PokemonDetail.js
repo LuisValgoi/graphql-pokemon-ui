@@ -11,7 +11,7 @@ import Container from 'react-bootstrap/Container'
 
 import BrowserURL from '../../util/BrowserURL';
 import ActionDetail from '../../redux/Pokemon/actions/Detail';
-import { hasData } from '../../util/Verficator';
+import { hasData } from '../../util/Payload';
 
 const PokemonDetail = ({ match }) => {
   const pokemon = useSelector(state => state.pokemon.detail.item);

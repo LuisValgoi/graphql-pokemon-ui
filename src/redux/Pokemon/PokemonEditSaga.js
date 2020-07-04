@@ -2,12 +2,9 @@ import { call, put, takeLeading } from 'redux-saga/effects';
 
 import Request from '../../util/Request';
 import URLProvider from '../../util/URLProvider';
+import { castResponse } from '../../util/Payload';
 
 import ActionEdit from './actions/Edit';
-
-function castResponse(data) {
-  return data;
-}
 
 function* handleOnItemLoad(id) {
   try {

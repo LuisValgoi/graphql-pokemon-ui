@@ -8,9 +8,10 @@ import Spinner from '../../components/Spinner/Spinner';
 import PokemonForm from './PokemonForm';
 
 import BrowserURL from '../../util/BrowserURL';
-import { hasData } from '../../util/Verficator';
+import { hasData } from '../../util/Payload';
 
 import ActionEdit from '../../redux/Pokemon/actions/Edit';
+import ActionPersistence from '../../redux/Pokemon/actions/Persistence';
 
 const PokemonEdit = ({ match }) => {
   const history = useHistory();
@@ -18,6 +19,8 @@ const PokemonEdit = ({ match }) => {
 
   const [onPokemonLoad] = useActions([(id) => ActionEdit.ON_ITEM_LOAD_REQUEST(id)], []);
   const [onPokemonReset] = useActions([() => ActionEdit.ON_ITEM_RESET()], []);
+
+  const [onPokemonSave] = useActions([(item) => ActionPersistence.ON_ITEM_SAVE(item)], []);
 
   useEffect(() => {
     onPokemonLoad(match.params.id);
@@ -27,7 +30,7 @@ const PokemonEdit = ({ match }) => {
 
   const getContent = () => {
     return (
-      <PokemonForm data={pokemon.data} onSubmit={(values) => alert(JSON.stringify(values))}>
+      <PokemonForm data={pokemon.data} onSubmit={values => onPokemonSave(values)}>
         <Button onClick={() => history.goBack()} className='mr-2' variant='link' disabled={false}>Go Back</Button>
         <Button type="submit" variant='primary' disabled={false}>Save</Button>
       </PokemonForm >
