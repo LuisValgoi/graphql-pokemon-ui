@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button';
 
 import URLProvider from '../../util/URLProvider';
 import BrowserURL from '../../util/BrowserURL';
+import { useIsSmallScreen } from '../../hooks/useIsMobile';
 
 export const RowInfos = (props) => {
   const { title, className, item } = props;
@@ -52,7 +53,9 @@ export const RowBadges = (props) => {
 }
 
 export const RowEvolutions = (props) => {
-  const { items, isSmallScreen, history, title } = props;
+  const { items, title } = props;
+  const isSmallScreen = useIsSmallScreen();
+  const history = useHistory();
 
   return (
     <Row className='mb-2'>

@@ -7,12 +7,6 @@ const INITIAL_STATE = {
     data: [],
     hasFailed: false,
     isLoading: false
-  },
-  item: {
-    data: {}
-  },
-  deletion: {
-    modalShown: false
   }
 };
 
@@ -47,28 +41,6 @@ const reducer = handleActions(
           isLoading: false
         }
       };
-    },
-    [ActionList.ON_DELETION_SHOW_MODAL]: (state, action) => {
-      return {
-        ...state,
-        item: {
-          data: action.payload
-        },
-        deletion: {
-          modalShown: true
-        }
-      }
-    },
-    [ActionList.ON_DELETION_CLOSE_MODAL]: state => {
-      return {
-        ...state,
-        item: {
-          data: {}
-        },
-        deletion: {
-          modalShown: false
-        }
-      }
     },
     [ActionList.ON_CLOSE_ERROR_LOAD_NOTIFICATION]: state => {
       return {

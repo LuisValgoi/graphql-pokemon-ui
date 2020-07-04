@@ -8,7 +8,7 @@ const ConfirmationModal = ({ onClose, onProceed, title, body }) => {
 
   return (
     <>
-      <Modal animation={false} ref={ref} show={true} onHide={onClose}>
+      <Modal animation={false} ref={ref} show onHide={onClose}>
         <Modal.Header closeButton>
           <Modal.Title>{title}</Modal.Title>
         </Modal.Header>

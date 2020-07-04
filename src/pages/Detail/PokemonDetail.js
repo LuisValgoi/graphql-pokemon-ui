@@ -1,8 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { Redirect, useHistory, useRouteMatch } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { useActions } from '../../hooks/useActions';
-import { useIsSmallScreen } from '../../hooks/useIsMobile';
 
 import { RegionImage, RegionContent, Region, RegionTitle } from '../../components/Region/Region';
 import { RowBadges, RowEvolutions, RowInfos } from './PokemonInfo';
@@ -15,10 +14,8 @@ import ActionDetail from '../../redux/Pokemon/actions/Detail';
 import { hasData } from '../../util/Verficator';
 
 const PokemonDetail = ({ match }) => {
-  const history = useHistory();
-  const isSmallScreen = useIsSmallScreen();
   const pokemon = useSelector(state => state.pokemon.detail.item);
-  const isDetailPage = useRouteMatch(BrowserURL.DETAIL).isExact;
+
   const [onPokemonLoad] = useActions([(id) => ActionDetail.ON_ITEM_LOAD_REQUEST(id)], []);
   const [onPokemonReset] = useActions([() => ActionDetail.ON_ITEM_RESET()], []);
 
@@ -26,7 +23,7 @@ const PokemonDetail = ({ match }) => {
     onPokemonLoad(match.params.id);
 
     return () => onPokemonReset();
-  }, [match.params.id, onPokemonLoad, isDetailPage, onPokemonReset]);
+  }, [match.params.id, onPokemonLoad, onPokemonReset]);
 
   const getContent = useCallback(() => {
     return (
@@ -49,12 +46,12 @@ const PokemonDetail = ({ match }) => {
             <hr />
             <RowBadges title='Resistant' items={pokemon.data.resistant} variant='primary' />
             <hr />
-            <RowEvolutions title='Evolutions' items={pokemon.data.evolutions} isSmallScreen={isSmallScreen} history={history} />
+            <RowEvolutions title='Evolutions' items={pokemon.data.evolutions} />
           </Container>
         </RegionContent>
       </Region>
     );
-  }, [history, isSmallScreen, pokemon.data]);
+  }, [pokemon.data]);
 
   const getPokemonDetail = useCallback(() => {
     if (hasData(pokemon.data)) {

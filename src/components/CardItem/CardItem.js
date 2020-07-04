@@ -15,7 +15,7 @@ const style = {
   }
 };
 
-const CardItem = ({ item, onShowDeleteModel }) => {
+const CardItem = ({ item, onShowDeleteModal }) => {
   return (
     <Card key={item.id}>
       <Card.Header className='text-center'>
@@ -32,7 +32,7 @@ const CardItem = ({ item, onShowDeleteModel }) => {
         </div>
       </Card.Body>
       <Card.Footer className="text-muted">
-        <Button variant='link' onClick={() => onShowDeleteModel(item)}>Delete</Button>
+        <Button variant='link' onClick={() => onShowDeleteModal(item)}>Delete</Button>
         <Link to={URLProvider.replace(BrowserURL.DETAIL, item.id)}>
           <Button className='float-right' variant='link'>Detail</Button>
         </Link>

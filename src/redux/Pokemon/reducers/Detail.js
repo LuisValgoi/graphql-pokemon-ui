@@ -43,7 +43,20 @@ const reducer = handleActions(
       };
     },
     [ActionDetail.ON_ITEM_RESET]: state => {
-      return INITIAL_STATE;
+      return {
+        ...state,
+        INITIAL_STATE
+      };
+    },
+    [ActionDetail.ON_ITEM_SET]: (state, action) => {
+      return {
+        ...state,
+        item: {
+          data: action.payload,
+          hasFailed: state.item.hasFailed,
+          isLoading: state.item.isLoading
+        }
+      };
     }
   },
   INITIAL_STATE

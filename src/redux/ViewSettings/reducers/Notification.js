@@ -9,7 +9,7 @@ const INITIAL_STATE = {
 
 const reducer = handleActions(
   {
-    [ActionNotification.ON_SHOW_NOTIFICATION]: state => {
+    [ActionNotification.ON_NOTIFICATION_SHOW]: state => {
       return {
         ...state,
         isShown: true,
@@ -23,7 +23,7 @@ const reducer = handleActions(
         isClosedForever: false
       }
     },
-    [ActionNotification.ON_CLOSE_FOREVER_NOTIFICATION]: state => {
+    [ActionNotification.ON_NOTIFICATION_CLOSE_FOREVER]: state => {
       return {
         ...state,
         isShown: false,
