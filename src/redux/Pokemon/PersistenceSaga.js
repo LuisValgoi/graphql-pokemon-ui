@@ -14,7 +14,7 @@ function* handleOnItemDelete() {
 }
 
 function* handleOnItemSave(item) {
-  alert(JSON.stringify(item.payload));
+  yield alert(JSON.stringify(item.payload));
 }
 
 function* watchPersistenceSaga() {
