@@ -52,7 +52,7 @@ const PokemonForm = ({ data, onSubmit, children }) => {
                 <InputGroup.Prepend>
                   <InputGroup.Text>kg</InputGroup.Text>
                 </InputGroup.Prepend>
-                <Form.Control type="number" name="weight.maximum" value={values.weight.maximum} onChange={handleChange} isValid={getIn(touched, 'weight.maximum') && !getIn(errors, 'weight.maximum')} isInvalid={getIn(errors, 'weight.maximum')} />
+                <Form.Control className='rounded-right' type="number" name="weight.maximum" value={values.weight.maximum} onChange={handleChange} isValid={getIn(touched, 'weight.maximum') && !getIn(errors, 'weight.maximum')} isInvalid={getIn(errors, 'weight.maximum')} />
                 <Form.Control.Feedback type="invalid">Required</Form.Control.Feedback>
               </InputGroup>
             </Form.Group>
@@ -63,7 +63,7 @@ const PokemonForm = ({ data, onSubmit, children }) => {
                 <InputGroup.Prepend>
                   <InputGroup.Text>kg</InputGroup.Text>
                 </InputGroup.Prepend>
-                <Form.Control type="number" name="weight.minimum" value={values.weight.minimum} onChange={handleChange} isValid={getIn(touched, 'weight.minimum') && !getIn(errors, 'weight.minimum')} isInvalid={getIn(errors, 'weight.minimum')} />
+                <Form.Control className='rounded-right' type="number" name="weight.minimum" value={values.weight.minimum} onChange={handleChange} isValid={getIn(touched, 'weight.minimum') && !getIn(errors, 'weight.minimum')} isInvalid={getIn(errors, 'weight.minimum')} />
                 <Form.Control.Feedback type="invalid">Required</Form.Control.Feedback>
               </InputGroup>
             </Form.Group>
@@ -74,7 +74,7 @@ const PokemonForm = ({ data, onSubmit, children }) => {
                 <InputGroup.Prepend>
                   <InputGroup.Text>m</InputGroup.Text>
                 </InputGroup.Prepend>
-                <Form.Control type="number" name="height.maximum" value={values.height.maximum} onChange={handleChange} isValid={getIn(touched, 'height.maximum') && !getIn(errors, 'height.maximum')} isInvalid={getIn(errors, 'height.maximum')} />
+                <Form.Control className='rounded-right' type="number" name="height.maximum" value={values.height.maximum} onChange={handleChange} isValid={getIn(touched, 'height.maximum') && !getIn(errors, 'height.maximum')} isInvalid={getIn(errors, 'height.maximum')} />
                 <Form.Control.Feedback type="invalid">Required</Form.Control.Feedback>
               </InputGroup>
             </Form.Group>
@@ -85,7 +85,7 @@ const PokemonForm = ({ data, onSubmit, children }) => {
                 <InputGroup.Prepend>
                   <InputGroup.Text>m</InputGroup.Text>
                 </InputGroup.Prepend>
-                <Form.Control type="number" name="height.minimum" value={values.height.minimum} onChange={handleChange} isValid={getIn(touched, 'height.minimum') && !getIn(errors, 'height.minimum')} isInvalid={getIn(errors, 'height.minimum')} />
+                <Form.Control className='rounded-right' type="number" name="height.minimum" value={values.height.minimum} onChange={handleChange} isValid={getIn(touched, 'height.minimum') && !getIn(errors, 'height.minimum')} isInvalid={getIn(errors, 'height.minimum')} />
                 <Form.Control.Feedback type="invalid">Required</Form.Control.Feedback>
               </InputGroup>
             </Form.Group>
