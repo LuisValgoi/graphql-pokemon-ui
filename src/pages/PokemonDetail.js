@@ -29,10 +29,13 @@ const PokemonDetail = ({ match }) => {
   const pokemon = useSelector(state => state.pokemon.detail.item);
   const isDetailPage = useRouteMatch(BrowserURL.DETAIL).isExact;
   const [onPokemonLoad] = useActions([(id) => ActionDetail.ON_ITEM_LOAD_REQUEST(id)], []);
+  const [onPokemonReset] = useActions([() => ActionDetail.ON_ITEM_RESET()], []);
 
   useEffect(() => {
     onPokemonLoad(match.params.id);
-  }, [match.params.id, onPokemonLoad, isDetailPage]);
+
+    return () => onPokemonReset();
+  }, [match.params.id, onPokemonLoad, isDetailPage, onPokemonReset]);
 
   const getEvolutions = useCallback(() => {
     return (

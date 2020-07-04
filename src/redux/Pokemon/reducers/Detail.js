@@ -41,6 +41,9 @@ const reducer = handleActions(
           isLoading: false
         }
       };
+    },
+    [ActionDetail.ON_ITEM_RESET]: state => {
+      return INITIAL_STATE;
     }
   },
   INITIAL_STATE
