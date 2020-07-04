@@ -3,16 +3,15 @@ import { Formik, getIn } from 'formik';
 import * as yup from 'yup';
 
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 
-const PokemonForm = ({ data }) => {
+const PokemonForm = ({ data, onSubmit, children }) => {
   const schema = yup.object().shape({
     name: yup.string().required(),
     classification: yup.string().required(),
     weight: yup.object().shape({
-      minimum: yup.string().max(5, 'Too long').required(),
-      maximum: yup.string().max(5, 'Too long').required(),
+      minimum: yup.string().max(6, 'Too long').required(),
+      maximum: yup.string().max(6, 'Too long').required(),
     }),
     height: yup.object().shape({
       minimum: yup.string().max(5, 'Too long').required(),
@@ -25,8 +24,8 @@ const PokemonForm = ({ data }) => {
   });
 
   return (
-    <Formik validationSchema={schema} onSubmit={console.log} initialValues={data}>
-      {({ handleSubmit, handleChange, isSubmitting, values, touched, errors }) => (
+    <Formik validationSchema={schema} onSubmit={onSubmit} initialValues={data} >
+      {({ handleSubmit, handleChange, values, touched, errors }) => (
         <Form onSubmit={handleSubmit}>
           <Form.Row>
             <Form.Group as={Col} md="6" controlId="nameControl">
@@ -87,11 +86,10 @@ const PokemonForm = ({ data }) => {
               <Form.Control.Feedback type="invalid">{errors.maxHP}</Form.Control.Feedback>
             </Form.Group>
           </Form.Row>
-
-          <Button type="submit" disabled={isSubmitting}>Save</Button>
+          {children}
         </Form>
       )}
-    </Formik>
+    </Formik >
   );
 }
 
