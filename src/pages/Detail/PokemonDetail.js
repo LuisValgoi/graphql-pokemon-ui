@@ -54,16 +54,16 @@ const PokemonDetail = ({ match }) => {
   }, [pokemon.data]);
 
   const getPokemonDetail = useCallback(() => {
-    if (hasData(pokemon.data)) {
+    if (pokemon && hasData(pokemon.data)) {
       return getContent()
 
-    } else if (pokemon.hasFailed) {
+    } else if (pokemon && pokemon.hasFailed) {
       return <Redirect to={BrowserURL.NOT_FOUND} />
 
     } else {
       return <Spinner />
     }
-  }, [getContent, pokemon.data, pokemon.hasFailed]);
+  }, [getContent, pokemon]);
 
   return getPokemonDetail();
 }
