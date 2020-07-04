@@ -19,7 +19,7 @@ const PokemonList = () => {
   const pokemons = useSelector(state => state.pokemon.list.items);
 
   const [onPokemonsLoad] = useActions([(query) => ActionList.ON_ITEMS_LOAD_REQUEST(query)], []);
-  const [onPokemonsLoadErrorClose] = useActions([() => ActionList.ON_CLOSE_ERROR_LOAD_NOTIFICATION()], []);
+  const [onPokemonsLoadErrorClose] = useActions([() => ActionList.ON_ITEMS_LOAD_FAIL_RESET()], []);
 
   const [onPokemonSet] = useActions([(item) => ActionDetail.ON_ITEM_SET(item)], []);
   const [onPokemonDelete] = useActions([() => ActionDetail.ON_ITEM_DELETE()], []);

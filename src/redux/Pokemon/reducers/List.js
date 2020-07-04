@@ -42,13 +42,13 @@ const reducer = handleActions(
         }
       };
     },
-    [ActionList.ON_CLOSE_ERROR_LOAD_NOTIFICATION]: state => {
+    [ActionList.ON_ITEMS_LOAD_FAIL_RESET]: state => {
       return {
         ...state,
         items: {
           data: state.items.data,
           hasFailed: false,
-          isLoading: state.items.isLoading
+          isLoading: false
         }
       }
     }
