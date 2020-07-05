@@ -17,7 +17,7 @@ const style = {
 
 const CardItem = ({ item, onShowDeleteModal }) => {
   return (
-    <Card key={item.id} style={{ minWidth: '33%', margin: '0px 1.5px 4px 1.5px' }}>
+    <Card key={item.id}>
       <Card.Header className='text-center'>
         <Card.Text>{item.name}</Card.Text>
       </Card.Header>
