@@ -46,7 +46,7 @@ const Shell = ({ title }) => {
             </h2>
           </Col>
           <Col xs={2} sm={2} md={1} lg={1}>
-            {location.pathname.includes('pokemon') && !location.pathname.includes('edit') && (
+            {location.pathname === URLProvider.replace(BrowserURL.DETAIL, pokemon.data.id) && (
               <Link to={URLProvider.replace(BrowserURL.EDIT, pokemon.data.id)}>
                 <Button variant='primary'>Edit</Button>
               </Link>
