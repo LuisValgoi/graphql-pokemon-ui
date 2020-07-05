@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
 import BrowserURL from '../../util/BrowserURL';
@@ -22,12 +22,20 @@ const style = {
 
 const Shell = ({ title }) => {
   const location = useLocation();
+  const history = useHistory();
   const pokemon = useSelector(state => state.pokemon.detail.item);
   const [showNavList, setShowNavList] = useState(false);
+  const [showNavEdit, setShowNavEdit] = useState(false);
+  const [id, setId] = useState(pokemon.data.id);
 
   useEffect(() => {
     setShowNavList(location.pathname !== BrowserURL.LIST);
+    setShowNavEdit(location.pathname === URLProvider.replace(BrowserURL.DETAIL, pokemon.data.id));
   }, [location, pokemon.data.id]);
+
+  useEffect(() => {
+    setId(pokemon.data.id)
+  }, [pokemon]);
 
   return (
     <div style={style.shell} className='p-4'>
@@ -46,10 +54,8 @@ const Shell = ({ title }) => {
             </h2>
           </Col>
           <Col xs={2} sm={2} md={1} lg={1}>
-            {location.pathname === URLProvider.replace(BrowserURL.DETAIL, pokemon.data.id) && (
-              <Link to={URLProvider.replace(BrowserURL.EDIT, pokemon.data.id)}>
-                <Button variant='primary'>Edit</Button>
-              </Link>
+            {showNavEdit && (
+              <Button onClick={() => history.push(URLProvider.replace(BrowserURL.EDIT, id))} variant='primary'>Edit</Button>
             )}
           </Col>
         </Row>

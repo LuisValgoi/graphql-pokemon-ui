@@ -76,6 +76,21 @@ const reducer = handleActions(
           hasSucced: false
         }
       };
+    },
+    [ActionPersistence.ON_PERSISTENCE_RESET]: state => {
+      return {
+        ...state,
+        delete: {
+          isLoading: false,
+          hasFailed: false,
+          hasSucced: false
+        },
+        save: {
+          isLoading: false,
+          hasFailed: false,
+          hasSucced: false
+        }
+      };
     }
   },
   INITIAL_STATE

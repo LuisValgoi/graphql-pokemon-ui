@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useMemo } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory, Redirect } from 'react-router-dom';
 import { useActions } from '../../hooks/useActions';
@@ -24,12 +24,13 @@ const PokemonEdit = ({ match }) => {
   const [onPokemonReset] = useActions([() => ActionEdit.ON_ITEM_RESET()], []);
 
   const [onPokemonSave] = useActions([(item) => ActionPersistence.ON_ITEM_SAVE(item)], []);
+  const [onPersistenceReset] = useActions([() => ActionPersistence.ON_PERSISTENCE_RESET()], []);
 
   useEffect(() => {
     onPokemonLoad(match.params.id);
 
-    return () => onPokemonReset();
-  }, [match.params.id, onPokemonLoad, onPokemonReset]);
+    return () => { onPokemonReset(); onPersistenceReset(); };
+  }, [match.params.id, onPokemonLoad, onPokemonReset, onPersistenceReset]);
 
   const getPokemonEdit = useCallback(() => {
     if (save.isLoading) {
