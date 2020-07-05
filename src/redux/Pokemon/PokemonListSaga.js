@@ -49,7 +49,7 @@ function _getRecordsFromLocalStorage(queryParam) {
 function* handleOnItemsLoad(param) {
   try {
     const queryParam = param.payload;
-    if (queryParam) yield delay(1000)
+    if (queryParam) yield delay(500)
 
     if (getState('pokemon.list.items.data').length > 0) {
       const data = _getRecordsFromLocalStorage(queryParam);
