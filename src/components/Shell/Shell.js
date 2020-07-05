@@ -24,12 +24,10 @@ const Shell = ({ title }) => {
   const location = useLocation();
   const pokemon = useSelector(state => state.pokemon.detail.item);
   const [showNavList, setShowNavList] = useState(false);
-  const [showNavEdit, setShowNavEdit] = useState(false);
 
   useEffect(() => {
     setShowNavList(location.pathname !== BrowserURL.LIST);
-    setShowNavEdit(location.pathname === URLProvider.replace(BrowserURL.DETAIL, pokemon.data.id));
-  }, [location, pokemon]);
+  }, [location, pokemon.data.id]);
 
   return (
     <div style={style.shell} className='p-4'>
@@ -48,7 +46,7 @@ const Shell = ({ title }) => {
             </h2>
           </Col>
           <Col xs={2} sm={2} md={1} lg={1}>
-            {showNavEdit && (
+            {location.pathname.includes('pokemon') && !location.pathname.includes('edit') && (
               <Link to={URLProvider.replace(BrowserURL.EDIT, pokemon.data.id)}>
                 <Button variant='primary'>Edit</Button>
               </Link>

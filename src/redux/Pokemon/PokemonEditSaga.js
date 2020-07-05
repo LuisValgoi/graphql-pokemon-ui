@@ -7,7 +7,15 @@ import { getState } from '../../util/LocalStorage';
 
 import ActionEdit from './actions/Edit';
 
-function _getRecordFromLocalStorage(id) {
+function _isInLocalStorageList() {
+  return getState('pokemon.list.items.data').length > 0;
+}
+
+function _isInLocalStorageDetail(id) {
+  return (Object.keys(getState('pokemon.detail.item.data')).length !== 0 && getState('pokemon.detail.item.data.id') === id);
+}
+
+function _getRecordFromLocalStorageList(id) {
   const items = getState('pokemon.list.items.data');
   for (let i = 0; i < items.length; i++) {
     if (items[i].id === id && items[i].active) {
@@ -28,8 +36,12 @@ function* _getRecordFromServer(id) {
 
 function* handleOnItemLoad(id) {
   try {
-    if (getState('pokemon.list.items.data').length > 0) {
-      const data = _getRecordFromLocalStorage(id.payload);
+    if (_isInLocalStorageList()) {
+      const data = _getRecordFromLocalStorageList(id.payload);
+      yield put(ActionEdit.ON_ITEM_LOAD_SUCCESS(data));
+
+    } else if (_isInLocalStorageDetail(id.payload)) {
+      const data = getState('pokemon.detail.item.data');
       yield put(ActionEdit.ON_ITEM_LOAD_SUCCESS(data));
 
     } else {

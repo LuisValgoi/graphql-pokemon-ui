@@ -14,15 +14,17 @@ import { hasData } from '../../util/Payload';
 
 const PokemonDetail = ({ match }) => {
   const pokemon = useSelector(state => state.pokemon.detail.item);
+  const save = useSelector(state => state.pokemon.persistence.save);
 
   const [onPokemonLoad] = useActions([(id) => ActionDetail.ON_ITEM_LOAD_REQUEST(id)], []);
   const [onPokemonReset] = useActions([() => ActionDetail.ON_ITEM_RESET()], []);
 
   useEffect(() => {
+    debugger;
     onPokemonLoad(match.params.id);
 
     return () => onPokemonReset();
-  }, [match.params.id, onPokemonLoad, onPokemonReset]);
+  }, [match.params.id, save, onPokemonLoad, onPokemonReset]);
 
   const getContent = useCallback(() => {
     return (
