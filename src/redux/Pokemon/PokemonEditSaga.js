@@ -11,7 +11,8 @@ function _getRecordFromLocalStorage(id) {
   const items = getState('pokemon.list.items.data');
   for (let i = 0; i < items.length; i++) {
     if (items[i].id === id && items[i].active) {
-      return items[i];
+      const dataCasted = castResponse(items[i]);
+      return dataCasted;
     }
   }
   throw new Error('Not Found or Inactive');

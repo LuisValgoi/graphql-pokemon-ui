@@ -1,15 +1,14 @@
 import React, { useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import { useActions } from '../../hooks/useActions';
 
+import NotFound from '../NotFound';
 import { RegionImage, RegionContent, Region, RegionTitle } from '../../components/Region/Region';
 import { RowBadges, RowEvolutions, RowInfos } from './PokemonInfo';
 import Spinner from '../../components/Spinner/Spinner';
 import Image from 'react-bootstrap/Image'
 import Container from 'react-bootstrap/Container'
 
-import BrowserURL from '../../util/BrowserURL';
 import ActionDetail from '../../redux/Pokemon/actions/Detail';
 import { hasData } from '../../util/Payload';
 
@@ -58,7 +57,7 @@ const PokemonDetail = ({ match }) => {
       return getContent()
 
     } else if (pokemon && pokemon.hasFailed) {
-      return <Redirect to={BrowserURL.NOT_FOUND} />
+      return <NotFound />
 
     } else {
       return <Spinner />
