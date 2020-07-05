@@ -40,8 +40,8 @@ const Shell = ({ title }) => {
   return (
     <div style={style.shell} className='p-4'>
       <Container>
-        <Row className='align-items-center'>
-          <Col xs={2} sm={2} md={1} lg={1}>
+        <Row>
+          <Col xs={2} sm={2} md={1} lg={1} className='justify-content-start'>
             {showNavList && (
               <Link to={BrowserURL.LIST}>
                 <Button variant='link'>Home</Button>
