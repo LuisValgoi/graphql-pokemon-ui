@@ -39,7 +39,6 @@ function* handleOnItemLoad(id) {
 
     } else if (_isInLocalStorageDetail(id.payload)) {
       const data = getState('pokemon.detail.item.data');
-      debugger;
       yield put(ActionDetail.ON_ITEM_LOAD_SUCCESS(data));
 
     } else {
