@@ -41,7 +41,7 @@ function* handleOnItemLoad(id) {
       yield put(ActionEdit.ON_ITEM_LOAD_SUCCESS(data));
 
     } else if (_isInLocalStorageDetail(id.payload)) {
-      const data = getState('pokemon.detail.item.data');
+      const data = castPokemonResponse(getState('pokemon.detail.item.data'));
       yield put(ActionEdit.ON_ITEM_LOAD_SUCCESS(data));
 
     } else {
