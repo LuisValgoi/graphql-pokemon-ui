@@ -45,7 +45,11 @@ const reducer = handleActions(
     [ActionDetail.ON_ITEM_RESET]: state => {
       return {
         ...state,
-        INITIAL_STATE
+        item: {
+          data: {},
+          hasFailed: false,
+          isLoading: false
+        }
       };
     },
     [ActionDetail.ON_ITEM_SET]: (state, action) => {

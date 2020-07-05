@@ -12,10 +12,13 @@ export const castPokemonResponse = (data) => {
 }
 
 export const castPokemonPayload = (data) => {
-  data.height.minimum = data.height.minimum + 'm';
-  data.height.maximum = data.height.maximum + 'm';
-  data.weight.minimum = data.weight.minimum + 'kg';
-  data.weight.maximum = data.weight.maximum + 'kg';
-  return data;
+  const backup = Object.assign({}, data);
+  backup.height.minimum = backup.height.minimum + 'm';
+  backup.height.maximum = backup.height.maximum + 'm';
+  backup.weight.minimum = backup.weight.minimum + 'kg';
+  backup.weight.maximum = backup.weight.maximum + 'kg';
+  backup.active = true;
+  backup.shown = true;
+  return backup;
 }
 
