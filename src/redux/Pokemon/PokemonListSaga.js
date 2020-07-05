@@ -2,19 +2,63 @@ import { call, put, takeLeading, delay } from 'redux-saga/effects';
 
 import Request from '../../util/Request';
 import URLProvider from '../../util/URLProvider';
+import { getState } from '../../util/LocalStorage';
 
 import ActionList from './actions/List';
+
+function _getItemsWithProperties(items) {
+  for (let i = 0; i < items.length; i++) {
+    items[i]['active'] = true;
+    items[i]['shown'] = true;
+  }
+  return items;
+};
+
+function _getItemsAsShown(items) {
+  for (let i = 0; i < items.length; i++) {
+    items[i]['shown'] = true;
+  }
+  return items;
+};
+
+function _getItemsAsNotShownWhenDifferentFromQueryParam(items, queryParam) {
+  for (let i = 0; i < items.length; i++) {
+    if (!items[i].name.toLowerCase().trim().includes(queryParam.toLowerCase())) {
+      items[i]['shown'] = false;
+    }
+  }
+  return items;
+}
+
+function* _getRecordsFromServer(queryParam) {
+  const url = URLProvider.getUrl('GET_POKEMONS');
+  const api = () => Request.get(url, queryParam ? { params: { query: queryParam } } : null);
+  const { data } = yield call(api);
+  const items = data.data.pokemons;
+  return _getItemsWithProperties(items);
+}
+
+function _getRecordsFromLocalStorage(queryParam) {
+  const items = getState('pokemon.list.items.data');
+  if (!queryParam) {
+    return _getItemsAsShown(items);
+  }
+  return _getItemsAsNotShownWhenDifferentFromQueryParam(items, queryParam);
+}
 
 function* handleOnItemsLoad(param) {
   try {
     const queryParam = param.payload;
-    const urlParams = queryParam ? { params: { query: queryParam } } : null;
-    if (urlParams) yield delay(500) // debounce
+    if (queryParam) yield delay(1000)
 
-    const url = URLProvider.getUrl('GET_POKEMONS');
-    const api = () => Request.get(url, urlParams);
-    const { data } = yield call(api);
-    yield put(ActionList.ON_ITEMS_LOAD_SUCCESS(data.data.pokemons));
+    if (getState('pokemon.list.items.data').length > 0) {
+      const data = _getRecordsFromLocalStorage(queryParam);
+      yield put(ActionList.ON_ITEMS_LOAD_SUCCESS(data));
+
+    } else {
+      const data = yield _getRecordsFromServer(queryParam);
+      yield put(ActionList.ON_ITEMS_LOAD_SUCCESS(data));
+    }
   } catch (error) {
     yield put(ActionList.ON_ITEMS_LOAD_FAIL());
   }

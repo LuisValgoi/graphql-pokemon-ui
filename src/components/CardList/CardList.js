@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React from 'react'
 
 import CardColumns from 'react-bootstrap/CardColumns';
@@ -10,9 +11,9 @@ const CardList = ({ items, onShowDeleteModal }) => {
     <>
       <CardColumns>
         {items.map(item => {
-          return (
-            <CardItem key={item.id} item={item} onShowDeleteModal={onShowDeleteModal} />
-          )
+          if (item.active && item.shown) {
+            return <CardItem key={item.id} item={item} onShowDeleteModal={onShowDeleteModal} />
+          }
         })}
       </CardColumns>
 
