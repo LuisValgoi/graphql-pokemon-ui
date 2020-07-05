@@ -53,7 +53,7 @@ const PokemonList = () => {
       )}
 
       {notification.isShown && !notification.isClosedForever && !pokemons.hasFailed && (
-        <Notification title='Information' variant='info' message='Keep in mind this is a mockserver data' onClose={onNotificationCloseForever} />
+        <Notification title='Information' variant='info' message='Keep in mind we are storing data at the Browser LocalStorage' onClose={onNotificationCloseForever} />
       )}
 
       {modal.shown && (
