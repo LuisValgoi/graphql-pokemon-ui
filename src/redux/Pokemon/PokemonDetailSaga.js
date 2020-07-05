@@ -33,13 +33,13 @@ function* _getRecordFromServer(id) {
 
 function* handleOnItemLoad(id) {
   try {
-    debugger;
     if (_isInLocalStorageList()) {
       const data = _getRecordFromLocalStorageList(id.payload);
       yield put(ActionDetail.ON_ITEM_LOAD_SUCCESS(data));
 
     } else if (_isInLocalStorageDetail(id.payload)) {
       const data = getState('pokemon.detail.item.data');
+      debugger;
       yield put(ActionDetail.ON_ITEM_LOAD_SUCCESS(data));
 
     } else {
