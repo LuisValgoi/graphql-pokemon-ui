@@ -25,7 +25,6 @@ function* _getRecordFromServer(id) {
 
 function* handleOnItemLoad(id) {
   try {
-
     if (getState('pokemon.list.items.data').length > 0) {
       const data = _getRecordFromLocalStorage(id.payload);
       yield put(ActionDetail.ON_ITEM_LOAD_SUCCESS(data));
