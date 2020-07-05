@@ -8,8 +8,12 @@ import ActionList from './actions/List';
 function* handleOnItemDelete() {
   const pokemons = yield select(getPokemons);
   const selectedPokemon = yield select(getSelectedPokemon);
-  const pokemonsLeft = pokemons.filter(pokemon => pokemon.id !== selectedPokemon.id);
-  yield put(ActionList.ON_ITEMS_LOAD_SUCCESS(pokemonsLeft));
+  for (let i = 0; i < pokemons.length; i++) {
+    if (pokemons[i].id === selectedPokemon.id) {
+      pokemons[i]['active'] = false;
+    }
+  }
+  yield put(ActionList.ON_ITEMS_LOAD_SUCCESS(pokemons));
   yield put(ActionModal.ON_CLOSE_MODAL());
 }
 
