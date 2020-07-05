@@ -14,8 +14,7 @@ https://github.com/LuisValgoi/graphql-pokemon-server
 
 ```
 yarn
-yarn mock
-yarn start
+yarn mock or yarn start
 ```
 
 ## Available Scripts
