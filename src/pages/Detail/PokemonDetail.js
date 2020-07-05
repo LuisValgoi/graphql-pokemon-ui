@@ -20,7 +20,6 @@ const PokemonDetail = ({ match }) => {
   const [onPokemonReset] = useActions([() => ActionDetail.ON_ITEM_RESET()], []);
 
   useEffect(() => {
-    debugger;
     onPokemonLoad(match.params.id);
 
     return () => onPokemonReset();
