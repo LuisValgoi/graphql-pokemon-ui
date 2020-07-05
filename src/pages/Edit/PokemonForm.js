@@ -25,7 +25,7 @@ const PokemonForm = ({ data, onSubmit, children }) => {
   });
 
   return (
-    <Formik validationSchema={schema} onSubmit={onSubmit} initialValues={data} >
+    <Formik enableReinitialize validationSchema={schema} onSubmit={onSubmit} initialValues={data} >
       {({ handleSubmit, handleChange, values, touched, errors }) => (
         <Form onSubmit={handleSubmit}>
           <Form.Row sm={12}><h3>General</h3></Form.Row>
