@@ -23,7 +23,6 @@ const reducer = handleActions(
       };
     },
     [ActionEdit.ON_ITEM_LOAD_SUCCESS]: (state, action) => {
-      debugger;
       return {
         ...state,
         item: {
