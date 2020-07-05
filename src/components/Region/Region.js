@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { useIsSmallScreen } from '../../hooks/useIsMobile';
-
 export const RegionTitle = (props) => {
   const { children, style } = props;
   const region = {

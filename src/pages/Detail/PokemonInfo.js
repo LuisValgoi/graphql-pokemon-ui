@@ -9,6 +9,7 @@ import GoBack from '../../components/GoBack/GoBack';
 
 import URLProvider from '../../util/URLProvider';
 import BrowserURL from '../../util/BrowserURL';
+import { useIsSmallScreen } from '../../hooks/useIsMobile';
 
 export const RowInfos = (props) => {
   const { title, className, item } = props;
@@ -53,6 +54,7 @@ export const RowBadges = (props) => {
 }
 
 export const RowEvolutions = (props) => {
+  const isSmallScreen = useIsSmallScreen();
   const { items, title } = props;
 
   return (
@@ -61,7 +63,7 @@ export const RowEvolutions = (props) => {
       <Col xs={12} sm={12} md={9} lg={10}>
         <>
           <Evolutions items={items} />
-          <div className='float-right'>
+          <div className={isSmallScreen ? 'unsert' : 'float-right'}>
             <GoBack />
           </div>
         </>
