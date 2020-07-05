@@ -1,14 +1,14 @@
 import React from 'react'
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
+import GoBack from '../../components/GoBack/GoBack';
 
 import URLProvider from '../../util/URLProvider';
 import BrowserURL from '../../util/BrowserURL';
-import { useIsSmallScreen } from '../../hooks/useIsMobile';
 
 export const RowInfos = (props) => {
   const { title, className, item } = props;
@@ -54,8 +54,6 @@ export const RowBadges = (props) => {
 
 export const RowEvolutions = (props) => {
   const { items, title } = props;
-  const isSmallScreen = useIsSmallScreen();
-  const history = useHistory();
 
   return (
     <Row className='mb-2'>
@@ -63,7 +61,9 @@ export const RowEvolutions = (props) => {
       <Col xs={12} sm={12} md={9} lg={10}>
         <>
           <Evolutions items={items} />
-          <Button variant='link' onClick={() => history.goBack()} className={`mr-2 ${isSmallScreen ? 'float-left' : 'float-right'}`}>Go Back</Button>
+          <div className='float-right'>
+            <GoBack />
+          </div>
         </>
       </Col>
     </Row>
