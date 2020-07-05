@@ -1,17 +1,16 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useActions } from '../../hooks/useActions';
 
+import NotFound from '../NotFound';
 import Button from 'react-bootstrap/Button';
 import Spinner from '../../components/Spinner/Spinner';
 import PokemonForm from './PokemonForm';
 
-import BrowserURL from '../../util/BrowserURL';
-import { hasData } from '../../util/Payload';
-
 import ActionEdit from '../../redux/Pokemon/actions/Edit';
 import ActionPersistence from '../../redux/Pokemon/actions/Persistence';
+import { hasData } from '../../util/Payload';
 
 const PokemonEdit = ({ match }) => {
   const history = useHistory();
@@ -42,7 +41,7 @@ const PokemonEdit = ({ match }) => {
       return getContent();
 
     } else if (pokemon && pokemon.hasFailed) {
-      return <Redirect to={BrowserURL.NOT_FOUND} />
+      return <NotFound />
 
     } else {
       return <Spinner />
