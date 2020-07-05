@@ -32,7 +32,10 @@ const PokemonEdit = ({ match }) => {
   }, [match.params.id, onPokemonLoad, onPokemonReset]);
 
   const getPokemonEdit = useCallback(() => {
-    if (pokemon && hasData(pokemon.data)) {
+    if (save.isLoading) {
+      return <Spinner />
+
+    } else if (pokemon && hasData(pokemon.data)) {
       return (
         <PokemonForm data={pokemon.data} onSubmit={values => onPokemonSave(values)}>
           <Button onClick={() => history.goBack()} className='mr-2' variant='link' disabled={save.isLoading}>Go Back</Button>
