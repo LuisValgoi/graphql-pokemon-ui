@@ -23,8 +23,11 @@ function _getItemsAsShown(items) {
 
 function _getItemsAsNotShownWhenDifferentFromQueryParam(items, queryParam) {
   for (let i = 0; i < items.length; i++) {
-    if (!items[i].name.toLowerCase().trim().includes(queryParam.toLowerCase())) {
+    debugger;
+    if (!items[i].name.toLowerCase().includes(queryParam.toLowerCase())) {
       items[i]['shown'] = false;
+    } else {
+      items[i]['shown'] = true;
     }
   }
   return items;
