@@ -39,7 +39,7 @@ const PokemonEdit = ({ match }) => {
     } else if (pokemon && hasData(pokemon.data)) {
       return (
         <PokemonForm data={pokemon.data} onSubmit={values => onPokemonSave(values)}>
-          <GoBack />
+          <GoBack text='Cancel' />
           <Button type="submit" variant='primary' disabled={false}>Save</Button>
         </PokemonForm >
       );
