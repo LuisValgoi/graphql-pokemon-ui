@@ -31,18 +31,14 @@ const PokemonEdit = ({ match }) => {
     return () => onPokemonReset();
   }, [match.params.id, onPokemonLoad, onPokemonReset]);
 
-  const getContent = () => {
-    return (
-      <PokemonForm data={pokemon.data} onSubmit={values => onPokemonSave(values)}>
-        <Button onClick={() => history.goBack()} className='mr-2' variant='link' disabled={save.isLoading}>Go Back</Button>
-        <Button type="submit" variant='primary' disabled={false}>Save</Button>
-      </PokemonForm >
-    );
-  };
-
-  const getPokemonEdit = () => {
+  const getPokemonEdit = useCallback(() => {
     if (pokemon && hasData(pokemon.data)) {
-      return getContent();
+      return (
+        <PokemonForm data={pokemon.data} onSubmit={values => onPokemonSave(values)}>
+          <Button onClick={() => history.goBack()} className='mr-2' variant='link' disabled={save.isLoading}>Go Back</Button>
+          <Button type="submit" variant='primary' disabled={false}>Save</Button>
+        </PokemonForm >
+      );
 
     } else if (pokemon && pokemon.hasFailed) {
       return <NotFound />
@@ -50,7 +46,7 @@ const PokemonEdit = ({ match }) => {
     } else {
       return <Spinner />
     }
-  };
+  }, [history, onPokemonSave, pokemon, save.isLoading]);
 
   return save.hasSucced ? <Redirect to={URLProvider.replace(BrowserURL.DETAIL, pokemon.data.id)} /> : getPokemonEdit();
 };
