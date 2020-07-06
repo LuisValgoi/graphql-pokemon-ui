@@ -13,7 +13,7 @@ test('RegionContent: should render', () => {
 
 test('RegionContent: should render element passed as children using the given structure', () => {
   const { getByTestId } = render(<RegionContent>text</RegionContent>);
-  const content = getByTestId('region-content');
+  const content = getByTestId('region-content-wrapper');
   const info = getByTestId('region-content-info');
   expect(content).toContainElement(info);
   expect(info).toContainHTML('text');

@@ -3,7 +3,7 @@
 exports[`RegionContent: should render 1`] = `
 <DocumentFragment>
   <div
-    data-testid="region-content"
+    data-testid="region-content-wrapper"
     style="border: .5rem solid #f7f7f7;"
   >
     <div
