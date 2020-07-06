@@ -9,9 +9,10 @@ afterEach(cleanup);
 test('should render', () => {
   const { asFragment } = render(<Spinner />);
   expect(asFragment()).toMatchSnapshot();
-})
+});
 
 test('should has text-center class', () => {
   const { getByTestId } = render(<Spinner />);
+
   expect(getByTestId('spinner')).toHaveClass('text-center');
-})
+});
