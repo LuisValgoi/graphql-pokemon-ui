@@ -18,8 +18,8 @@ export const RegionTitle = (props) => {
   }
 
   return (
-    <div style={{ ...region.wrapper, ...style }}>
-      <div style={region.title}>
+    <div data-testid='region-title-wrapper' style={{ ...region.wrapper, ...style }}>
+      <div data-testid='region-title-info' style={region.title}>
         {children}
       </div>
     </div >
@@ -65,7 +65,7 @@ export const RegionContent = (props) => {
   }
 
   return (
-    <div data-testid='region-content' style={{ ...region.wrapper, ...style }}>
+    <div data-testid='region-content-wrapper' style={{ ...region.wrapper, ...style }}>
       <div data-testid='region-content-info' style={region.info}>
         {children}
       </div>

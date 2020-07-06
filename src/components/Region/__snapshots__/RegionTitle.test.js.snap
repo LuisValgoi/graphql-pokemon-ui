@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RegionTitle: should render 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="region-title-wrapper"
+    style="border: .5rem solid #f7f7f7;"
+  >
+    <div
+      data-testid="region-title-info"
+      style="padding: .5rem; color: rgb(0, 123, 255); background-color: white; border-radius: calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px); vertical-align: middle; text-align: center;"
+    />
+  </div>
+</DocumentFragment>
+`;
