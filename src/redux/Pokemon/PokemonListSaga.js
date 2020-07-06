@@ -21,9 +21,8 @@ function _getItemsAsShown(items) {
   return items;
 };
 
-function _getItemsAsNotShownWhenDifferentFromQueryParam(items, queryParam) {
+function _getItemsFiltered(items, queryParam) {
   for (let i = 0; i < items.length; i++) {
-    debugger;
     if (!items[i].name.toLowerCase().includes(queryParam.toLowerCase())) {
       items[i]['shown'] = false;
     } else {
@@ -46,7 +45,7 @@ function _getRecordsFromLocalStorage(queryParam) {
   if (!queryParam) {
     return _getItemsAsShown(items);
   }
-  return _getItemsAsNotShownWhenDifferentFromQueryParam(items, queryParam);
+  return _getItemsFiltered(items, queryParam);
 }
 
 function* handleOnItemsLoad(param) {
