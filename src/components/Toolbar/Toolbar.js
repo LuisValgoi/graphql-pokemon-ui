@@ -17,7 +17,7 @@ const Toolbar = ({ onSearch }) => {
     <Row style={style.row}>
       <Col sm={12}>
         <InputGroup>
-          <FormControl onInput={(e) => onSearch(e.target.value)} placeholder="Search by a pokemon name" />
+          <FormControl data-testid='toolbar-input' onInput={(e) => onSearch(e.target.value)} placeholder="Search by a pokemon name" />
         </InputGroup>
       </Col>
     </Row>

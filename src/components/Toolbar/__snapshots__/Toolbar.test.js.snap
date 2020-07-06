@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render 1`] = `
+<DocumentFragment>
+  <div
+    class="row"
+    style="margin-top: 1rem; padding-bottom: 1rem;"
+  >
+    <div
+      class="col-sm-12"
+    >
+      <div
+        class="input-group"
+      >
+        <input
+          class="form-control"
+          data-testid="toolbar-input"
+          placeholder="Search by a pokemon name"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
