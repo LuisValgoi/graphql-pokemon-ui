@@ -11,5 +11,7 @@ test('should render', () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
-
-
+test('should has text-center class', () => {
+  const { getByTestId } = render(<Spinner />);
+  expect(getByTestId('spinner')).toHaveClass('text-center');
+})
