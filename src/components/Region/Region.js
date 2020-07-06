@@ -42,8 +42,8 @@ export const RegionImage = (props) => {
   };
 
   return (
-    <div style={{ ...region.wrapper, ...style }}>
-      <div style={region.image}>
+    <div data-testid='region-image-wrapper' style={{ ...region.wrapper, ...style }}>
+      <div data-testid='region-image-info' style={region.image}>
         {children}
       </div>
     </div>
