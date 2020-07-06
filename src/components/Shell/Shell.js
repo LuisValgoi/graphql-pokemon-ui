@@ -29,6 +29,14 @@ const Shell = ({ title }) => {
   const [id, setId] = useState(pokemon.data.id);
 
   useEffect(() => {
+    // console.log(pokemon.data.id)
+    // console.log(location.pathname)
+    // console.log(BrowserURL.LIST)
+    // console.log(URLProvider.replace(BrowserURL.DETAIL, pokemon.data.id))
+    // console.log(location.pathname !== BrowserURL.LIST);
+    // console.log(location.pathname === URLProvider.replace(BrowserURL.DETAIL, pokemon.data.id));
+    // console.log('oiasjdoaijdoiadjoaidjoaidjas')
+
     setShowNavList(location.pathname !== BrowserURL.LIST);
     setShowNavEdit(location.pathname === URLProvider.replace(BrowserURL.DETAIL, pokemon.data.id));
   }, [location, pokemon.data.id]);
@@ -38,12 +46,12 @@ const Shell = ({ title }) => {
   }, [pokemon]);
 
   return (
-    <div style={style.shell} className='p-4'>
+    <div data-testid='shell-wrapper' style={style.shell} className='p-4'>
       <Container>
         <Row>
-          <Col xs={2} sm={2} md={1} lg={1} className='justify-content-start'>
+          <Col data-testid='shell-home-col' xs={2} sm={2} md={1} lg={1} className='justify-content-start'>
             {showNavList && (
-              <Link to={BrowserURL.LIST}>
+              <Link data-testid='shell-home' to={BrowserURL.LIST}>
                 <Button variant='link'>Home</Button>
               </Link>
             )}
