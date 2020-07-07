@@ -53,10 +53,7 @@ workflows:
 
   pull_request:
     jobs:
-      - install
       - test:
-          requires:
-            - install
           filters:
             <<: *pull_request_filter
       - build:
@@ -67,10 +64,7 @@ workflows:
 
   release:
     jobs:
-      - install
       - test:
-          requires:
-            - install
           filters:
             <<: *release_filter
       - build:
