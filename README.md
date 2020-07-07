@@ -38,3 +38,6 @@ yarn mock or yarn start
 - `redux-actions`: Better way to trigger actions w/ redux-saga.
 - `redux-saga`: Mess with the components side-effects.
 - `react-router-dom`: Routing.
+- `yup` + `formik`: Form & Validation.
+- `lodash`: Utility lib.
+- `husky`: pre-commit validator.
