@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RegionContent: should render 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="region-content-wrapper"
+    style="border: .5rem solid #f7f7f7;"
+  >
+    <div
+      data-testid="region-content-info"
+      style="background-color: white; border-radius: calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px); padding: .5rem;"
+    />
+  </div>
+</DocumentFragment>
+`;

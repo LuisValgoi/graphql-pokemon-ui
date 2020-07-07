@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RegionImage: should render 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="region-image-wrapper"
+    style="border: .5rem solid #f7f7f7; background-color: white; vertical-align: middle; text-align: center;"
+  >
+    <div
+      data-testid="region-image-info"
+      style="border-radius: calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px);"
+    />
+  </div>
+</DocumentFragment>
+`;

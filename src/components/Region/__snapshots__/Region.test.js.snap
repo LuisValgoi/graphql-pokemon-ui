@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Region: should render 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="region"
+    style="margin-top: 1rem; padding: .1rem; border-radius: calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px); background-color: rgb(247, 247, 247);"
+  />
+</DocumentFragment>
+`;

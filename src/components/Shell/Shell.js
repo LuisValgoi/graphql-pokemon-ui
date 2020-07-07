@@ -38,12 +38,12 @@ const Shell = ({ title }) => {
   }, [pokemon]);
 
   return (
-    <div style={style.shell} className='p-4'>
+    <div data-testid='shell-wrapper' style={style.shell} className='p-4'>
       <Container>
         <Row>
-          <Col xs={2} sm={2} md={1} lg={1} className='justify-content-start'>
+          <Col data-testid='shell-home-col' xs={2} sm={2} md={1} lg={1} className='justify-content-start'>
             {showNavList && (
-              <Link to={BrowserURL.LIST}>
+              <Link data-testid='shell-home' to={BrowserURL.LIST}>
                 <Button variant='link'>Home</Button>
               </Link>
             )}
