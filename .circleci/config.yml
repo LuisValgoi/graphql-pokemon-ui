@@ -1,7 +1,7 @@
 aliases:
   - &node_executor
       executor:
-        name: node/node
+        name: node/default
         node-version: "10"
 
   - &release_filter
@@ -57,6 +57,8 @@ workflows:
   pull_request:
     jobs:
       - install
+          filters:
+            <<: *pull_request_filter
       - test:
           requires:
             - install
@@ -71,6 +73,8 @@ workflows:
   release:
     jobs:
       - install
+          filters:
+            <<: *release_filter
       - test:
           requires:
             - install
