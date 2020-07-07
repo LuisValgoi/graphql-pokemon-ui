@@ -29,14 +29,6 @@ const Shell = ({ title }) => {
   const [id, setId] = useState(pokemon.data.id);
 
   useEffect(() => {
-    // console.log(pokemon.data.id)
-    // console.log(location.pathname)
-    // console.log(BrowserURL.LIST)
-    // console.log(URLProvider.replace(BrowserURL.DETAIL, pokemon.data.id))
-    // console.log(location.pathname !== BrowserURL.LIST);
-    // console.log(location.pathname === URLProvider.replace(BrowserURL.DETAIL, pokemon.data.id));
-    // console.log('oiasjdoaijdoiadjoaidjoaidjas')
-
     setShowNavList(location.pathname !== BrowserURL.LIST);
     setShowNavEdit(location.pathname === URLProvider.replace(BrowserURL.DETAIL, pokemon.data.id));
   }, [location, pokemon.data.id]);

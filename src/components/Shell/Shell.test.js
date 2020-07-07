@@ -1,15 +1,12 @@
 import React from 'react';
 
-import { render, cleanup } from './TestUtil';
+import { render, screen } from './TestUtil';
 import '@testing-library/jest-dom/extend-expect';
 import Shell from './Shell';
 import PokemonDetailReducer from '../../redux/Pokemon/reducers/Detail';
-import store from '../../redux/store';
 
 let INITIAL_STATE = {};
-let shellElement = null;
 beforeEach(() => {
-  // cleanup();
   INITIAL_STATE = {
     pokemon: {
       detail: {
@@ -21,25 +18,40 @@ beforeEach(() => {
       },
     }
   };
-  shellElement = render(<Shell title='title' />, { reducer: PokemonDetailReducer, mockStore: INITIAL_STATE });
+  render(<Shell title='title' />, { reducer: PokemonDetailReducer, mockStore: INITIAL_STATE });
 });
 
 test('should render', () => {
-  const shell = shellElement.getByTestId('shell-wrapper');
+  const shell = screen.getByTestId('shell-wrapper');
+
   expect(shell).toMatchSnapshot();
 });
 
 test('should have a little padding', () => {
-  const shell = shellElement.getByTestId('shell-wrapper');
+  const shell = screen.getByTestId('shell-wrapper');
+
   expect(shell).toBeInTheDocument();
   expect(shell).toHaveClass('p-4');
 });
 
 test('should not be shown at home', () => {
-  const shell = shellElement.getByTestId('shell-wrapper');
-  const homeCol = shellElement.getByTestId('shell-home-col');
-  const homeLink = shellElement.queryByTestId('shell-home');
+  const shell = screen.getByTestId('shell-wrapper');
+  const homeCol = screen.getByTestId('shell-home-col');
+  const homeLink = screen.queryByTestId('shell-home');
+
   expect(shell).toBeInTheDocument();
   expect(shell).toContainElement(homeCol);
   expect(homeLink).toEqual(null);
 });
+
+// test('home link should be shown at details page', async () => {
+//   window.location.pathname = 'aoiejoaijoieaj'
+//   const { rerender } = screen;
+//   rerender(<Shell title='text2' />);
+  // const shell = shellElementView.getByTestId('shell-wrapper');
+  // const homeCol = shellElementView.getByTestId('shell-home-col');
+  // const homeLink = shellElementView.getByTestId('shell-home');
+  // expect(shell).toBeInTheDocument();
+  // await wait(() => expect(shell).toContainElement(homeCol));
+  // await wait(() => expect(homeCol).toContainElement(homeLink));
+// })
