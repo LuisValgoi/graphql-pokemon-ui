@@ -27,6 +27,7 @@ exports[`should render 1`] = `
       </div>
       <div
         class="col-lg-1 col-md-1 col-sm-2 col-2"
+        data-testid="shell-edit-col"
       />
     </div>
   </div>
