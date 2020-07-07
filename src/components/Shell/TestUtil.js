@@ -1,20 +1,20 @@
 import React from 'react'
 import { render as rtlRender } from '@testing-library/react'
 import { Provider } from 'react-redux'
-import { MemoryRouter, Route } from 'react-router-dom';
+import { Router } from 'react-router-dom';
+import { createMemoryHistory } from 'history'
 import { createStore } from 'redux';
 import BrowserURL from '../../util/BrowserURL';
 
-const render = (ui, { mockStore, reducer, entries, path, ...renderOptions }) => {
+const render = (ui, { mockStore, reducer, route = BrowserURL.LIST, ...renderOptions } = {}) => {
   const store = createStore(reducer, mockStore);
   const Wrapper = ({ children }) => {
+    const history = createMemoryHistory({ initialEntries: [route] });
     return (
       <Provider store={store}>
-        <MemoryRouter initialEntries={entries ?? [Object.values(BrowserURL)]}>
-          <Route path={path ?? BrowserURL.ANY}>
-            {children}
-          </Route>
-        </MemoryRouter>
+        <Router history={history}>
+          {children}
+        </Router>
       </Provider>
     );
   };

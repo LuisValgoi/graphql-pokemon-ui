@@ -6,18 +6,9 @@ import Shell from './Shell';
 import PokemonDetailReducer from '../../redux/Pokemon/reducers/Detail';
 
 let INITIAL_STATE = {};
+
 beforeEach(() => {
-  INITIAL_STATE = {
-    pokemon: {
-      detail: {
-        item: {
-          data: {
-            id: 1
-          }
-        }
-      },
-    }
-  };
+  INITIAL_STATE = { pokemon: { detail: { item: { data: { id: 1 } } } } };
   render(<Shell title='title' />, { reducer: PokemonDetailReducer, mockStore: INITIAL_STATE });
 });
 
@@ -44,14 +35,14 @@ test('should not be shown at home', () => {
   expect(homeLink).toEqual(null);
 });
 
-// test('home link should be shown at details page', async () => {
-//   window.location.pathname = 'aoiejoaijoieaj'
-//   const { rerender } = screen;
-//   rerender(<Shell title='text2' />);
-  // const shell = shellElementView.getByTestId('shell-wrapper');
-  // const homeCol = shellElementView.getByTestId('shell-home-col');
-  // const homeLink = shellElementView.getByTestId('shell-home');
-  // expect(shell).toBeInTheDocument();
-  // await wait(() => expect(shell).toContainElement(homeCol));
-  // await wait(() => expect(homeCol).toContainElement(homeLink));
-// })
+test('home link should be shown at details page', () => {
+  render(<Shell title='title' />, { reducer: PokemonDetailReducer, mockStore: INITIAL_STATE, route: '/pokemon/1' });
+
+  const homeCol = screen.queryAllByTestId('shell-home-col')[1];
+  const homeLink = screen.getByTestId('shell-home');
+
+  expect(homeCol).toBeInTheDocument();
+  expect(homeLink).toBeInTheDocument();
+  expect(homeCol).toContainElement(homeLink);
+  expect(homeLink).toHaveTextContent('Home');
+});
