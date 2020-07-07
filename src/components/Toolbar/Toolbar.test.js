@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { render, screen, fireEvent } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import Toolbar from './Toolbar';
 
@@ -23,6 +24,6 @@ test('should set variable through IoC to "text"', () => {
   render(<Toolbar onSearch={onSearch} />);
 
   const toolbar = screen.getByTestId('toolbar-input');
-  fireEvent.input(toolbar, { target: { value: 'text' } });
+  userEvent.type(toolbar, 'text');
   expect(toolbar.value).toBe(variable);
 });
