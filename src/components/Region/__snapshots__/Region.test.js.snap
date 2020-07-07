@@ -4,7 +4,7 @@ exports[`Region: should render 1`] = `
 <DocumentFragment>
   <div
     data-testid="region"
-    style="margin-top: 1rem; padding: .1rem; border-radius: calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px); background-color: rgb(247, 247, 247);"
+    style="margin-top: 1rem; padding: .1rem; border: 1px solid rgba(0,0,0,.125); border-radius: calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px) calc(.25rem - 1px); background-color: rgb(247, 247, 247);"
   />
 </DocumentFragment>
 `;

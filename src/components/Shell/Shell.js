@@ -43,7 +43,7 @@ const Shell = ({ title }) => {
         <Row>
           <Col data-testid='shell-home-col' xs={2} sm={2} md={1} lg={1} className='justify-content-start'>
             {showNavList && (
-              <Link data-testid='shell-home' to={BrowserURL.LIST}>
+              <Link data-testid='shell-home-link' to={BrowserURL.LIST}>
                 <Button variant='link'>Home</Button>
               </Link>
             )}
@@ -53,9 +53,9 @@ const Shell = ({ title }) => {
               {title}
             </h2>
           </Col>
-          <Col xs={2} sm={2} md={1} lg={1}>
+          <Col data-testid='shell-edit-col' xs={2} sm={2} md={1} lg={1}>
             {showNavEdit && (
-              <Button onClick={() => history.push(URLProvider.replace(BrowserURL.EDIT, id))} variant='primary'>Edit</Button>
+              <Button data-testid='shell-edit-button' onClick={() => history.push(URLProvider.replace(BrowserURL.EDIT, id))} variant='primary'>Edit</Button>
             )}
           </Col>
         </Row>

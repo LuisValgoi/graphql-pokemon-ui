@@ -5,7 +5,7 @@ import '@testing-library/jest-dom/extend-expect';
 import { RegionImage } from './Region';
 
 test('RegionImage: should render', () => {
-  const { asFragment } = render(<RegionImage />)
+  const { asFragment } = render(<RegionImage />);
   expect(asFragment()).toMatchSnapshot();
 });
 
@@ -17,5 +17,5 @@ test('RegionImage: should render img w/ some borders around it', () => {
   const info = screen.getByTestId('region-image-info');
 
   expect(wrapper).toContainElement(info);
-  expect(info).toHaveStyle(`border: '1px solid rgba(0,0,0,.125)'`);
+  expect(info).toHaveStyle(`border: 1px solid rgba(0,0,0,.125)`);
 });
