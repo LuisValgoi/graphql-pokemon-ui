@@ -25,10 +25,11 @@ jobs:
     steps:
       - checkout
       - node/with-cache
-      - run: npm run test -- --coverage --watchAll=false
-      - store_artifacts:
-          path: coverage
-          destination: coverage
+        steps:
+          - run: npm run test -- --coverage --watchAll=false
+          - store_artifacts:
+              path: coverage
+              destination: coverage
 
   build:
     <<: *node_executor
