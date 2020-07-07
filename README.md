@@ -23,7 +23,7 @@ yarn mock or yarn start
 
 `yarn start`: Runs the app @ [:3000](http://localhost:3000) w/ the server @ [:9000](http://localhost:9000) in background.
 
-`yarn test`: Executes the tests of the app ([RLT](https://testing-library.com/) + [JEST](https://jestjs.io/)).
+`yarn test`: Executes the tests of the app ([RTL](https://testing-library.com/) + [JEST](https://jestjs.io/)).
 
 `yarn test:ci`: Executes the `yarn test` w/a prompting you anything.
 
