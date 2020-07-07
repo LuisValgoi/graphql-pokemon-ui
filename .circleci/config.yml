@@ -20,35 +20,32 @@ orbs:
   node: circleci/node@1.1.6
 
 jobs:
-  install:
-    <<: *node_executor
-    steps:
-      - checkout
-      - node/with-cache:
-          steps:
-            - run: yarn install
-
   test:
     <<: *node_executor
     steps:
-      - node/with-cache:
-          steps:
-            - run: yarn test
+      - ci/pre-setup
+      - node/npm-install
+      - run: npm run test -- --coverage --watchAll=false
+      - store_artifacts:
+          path: coverage
+          destination: coverage
 
   build:
     <<: *node_executor
     steps:
-      - node/with-cache:
-          steps:
-            - run: yarn build
-            - persist_to_workspace:
-                root: ./
-                paths:
-                  - public
+      - ci/pre-setup
+      - node/npm-install
+      - run: yarn build
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - public
 
   deploy:
     <<: *node_executor
     steps:
+      - ci/pre-setup
+      - node/npm-install
       - run: curl -X POST -d {} ${hook}
 
 workflows:
