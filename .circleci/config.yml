@@ -23,18 +23,17 @@ jobs:
   test:
     <<: *node_executor
     steps:
-      - ci/pre-setup
-      - node/npm-install
-      - run: npm run test -- --coverage --watchAll=false
-      - store_artifacts:
-          path: coverage
-          destination: coverage
+      - checkout
+      - node/with-cache
+        steps:
+          - run: npm run test -- --coverage --watchAll=false
+          - store_artifacts:
+              path: coverage
+              destination: coverage
 
   build:
     <<: *node_executor
     steps:
-      - ci/pre-setup
-      - node/npm-install
       - run: yarn build
       - persist_to_workspace:
           root: ./
@@ -44,8 +43,6 @@ jobs:
   deploy:
     <<: *node_executor
     steps:
-      - ci/pre-setup
-      - node/npm-install
       - run: curl -X POST -d {} ${hook}
 
 workflows:
