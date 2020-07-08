@@ -31,7 +31,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "test:ci": "npm run test -- --watchAll=false",
-    "test:coverage": "npm run test -- --coverage --watchAll=false",
+    "test:coverage": "npm run test -- --watchAll=false --coverage && cat ./coverage/lcov.info | coveralls",
     "test:coveralls": "CI=true COVERALLS_PARALLEL=true npm run test:coverage",
     "eject": "react-scripts eject"
   },
