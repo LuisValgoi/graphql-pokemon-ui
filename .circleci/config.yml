@@ -17,6 +17,7 @@ version: 2.1
 
 orbs:
   node: circleci/node@1.1.6
+  coveralls: coveralls/coveralls@1.0.6
 
 jobs:
   test:
@@ -29,18 +30,17 @@ jobs:
             - store_artifacts:
                 path: coverage
                 destination: coverage
+            - coveralls/upload:
+                parallel: true
 
   build:
     <<: *node_executor
     steps:
-      - checkout
-      - node/with-cache:
-          steps:
-            - run: yarn build
-            - persist_to_workspace:
-                root: ./
-                paths:
-                  - public
+      - run: yarn build
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - public
 
   deploy:
     <<: *node_executor
