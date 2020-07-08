@@ -32,11 +32,13 @@ jobs:
   build:
     <<: *node_executor
     steps:
-      - run: yarn build
-      - persist_to_workspace:
-          root: ./
-          paths:
-            - public
+      - node/with-cache:
+          steps:
+            - run: yarn build
+            - persist_to_workspace:
+                root: ./
+                paths:
+                  - public
 
   deploy:
     <<: *node_executor
