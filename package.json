@@ -31,8 +31,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "test:ci": "npm run test -- --watchAll=false",
-    "test:coverage": "npm run test -- --watchAll=false --coverage && cat ./coverage/lcov.info | coveralls",
-    "test:coveralls": "CI=true COVERALLS_PARALLEL=true npm run test:coverage",
+    "test:coverage": "npm run test -- --watchAll=false --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -56,7 +55,6 @@
     }
   },
   "devDependencies": {
-    "coveralls": "^3.1.0",
     "env-cmd": "^10.1.0",
     "http-proxy-middleware": "^1.0.4",
     "husky": "^4.2.5",
