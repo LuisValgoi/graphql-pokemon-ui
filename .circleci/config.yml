@@ -33,20 +33,22 @@ jobs:
   build:
     <<: *node_executor
     steps:
-      - ci/pre-setup
-      - node/npm-install
-      - run: yarn build
-      - persist_to_workspace:
-          root: ./
-          paths:
-            - public
+      - checkout
+      - node/with-cache:
+          steps:
+            - run: yarn build
+            - persist_to_workspace:
+                root: ./
+                paths:
+                  - public
 
   deploy:
     <<: *node_executor
     steps:
-      - ci/pre-setup
-      - node/npm-install
-      - run: curl -X POST -d {} ${hook}
+      - checkout
+      - node/with-cache:
+          steps:
+            - run: curl -X POST -d {} ${hook}
 
 workflows:
   version: 2
