@@ -4,8 +4,8 @@ GraphQL Pokemon User Interface
 
 ##  Status of CI/CD
 [![LuisValgoi](https://circleci.com/gh/LuisValgoi/graphql-pokemon-ui.svg?style=shield)](https://app.circleci.com/pipelines/github/LuisValgoi/graphql-pokemon-ui)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/9073c094-1280-4115-a4c4-47d8417dfbdd/deploy-status)](https://app.netlify.com/sites/graphql-pokemon-ui/deploys)
 [![Coverage Status](https://coveralls.io/repos/github/LuisValgoi/graphql-pokemon-ui/badge.svg?branch=master)](https://coveralls.io/github/LuisValgoi/graphql-pokemon-ui?branch=master)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9073c094-1280-4115-a4c4-47d8417dfbdd/deploy-status)](https://app.netlify.com/sites/graphql-pokemon-ui/deploys)
 
 ## Backend
 
