@@ -26,9 +26,7 @@ yarn mock or yarn start
 
 `yarn test`: Executes the tests of the app ([RTL](https://testing-library.com/) + [JEST](https://jestjs.io/)).
 
-`yarn test:ci`: Executes the `yarn test` w/a prompting you anything.
-
-`yarn test:coverage`: Executes the `yanr test:ci` and generates the `./coverage` folder reported by [jest](https://www.google.com/search?q=jest+lcov&oq=jest+lcov&aqs=chrome..69i57j0l7.1238j0j7&sourceid=chrome&ie=UTF-8).
+`yarn test:coverage`: Executes the `yanr test` and generates the `./coverage` folder reported by [jest](https://www.google.com/search?q=jest+lcov&oq=jest+lcov&aqs=chrome..69i57j0l7.1238j0j7&sourceid=chrome&ie=UTF-8).
 
 ## Dependencies
 
