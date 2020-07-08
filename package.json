@@ -32,7 +32,7 @@
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "test:ci": "npm run test -- --watchAll=false",
     "test:coverage": "npm run test -- --coverage --watchAll=false",
-    "test:coveralls": "jest --coverage --coverageReporerts=text-lcov | coveralls",
+    "test:coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
