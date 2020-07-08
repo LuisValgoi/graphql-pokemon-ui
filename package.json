@@ -30,6 +30,7 @@
     "mock": "env-cmd -f .env npm-run-all --parallel start:mock start:react",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
+    "test:ci": "npm run test -- --watchAll=false",
     "test:coverage": "npm run test -- --coverage --watchAll=false",
     "test:coveralls": "jest --coverage --coverageReporerts=text-lcov | coveralls",
     "eject": "react-scripts eject"
@@ -51,7 +52,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run test:coverage"
+      "pre-commit": "npm run test:ci"
     }
   },
   "devDependencies": {
